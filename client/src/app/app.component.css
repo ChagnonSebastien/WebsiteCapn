@@ -8,6 +8,11 @@
     height: 3rem;
 }
 
+#facebook-logo {
+    width: 2rem;
+    background-color: white;
+}
+
 .navbar > a {
     padding-top: 0rem;
     padding-bottom: 0rem;
