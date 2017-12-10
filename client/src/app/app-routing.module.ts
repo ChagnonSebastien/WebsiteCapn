@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
-    { path: '**', redirectTo: './' }
+    { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({
