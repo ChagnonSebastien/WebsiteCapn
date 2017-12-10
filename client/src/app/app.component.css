@@ -1,5 +1,10 @@
 .logo {
-    height: 2.75rem;
+    height: 3rem;
+}
+
+.navbar > a {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
 }
 
 .nav-item {
@@ -7,9 +12,9 @@
 }
 
 .navbar-toggler-right {
-    margin-top: .5rem;
+    margin-top: .25rem;
 }
 
 .container {
-    padding-top: 5rem;
+    margin-top: 4rem;
 }

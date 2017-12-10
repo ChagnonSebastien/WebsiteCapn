@@ -3,6 +3,6 @@
     background-color: #1E3A77 !important;
 }
 
-html body {
+html, body {
     cursor: default;
 }
