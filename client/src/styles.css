@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.bg-primary {
+    background-color: #1E3A77 !important;
+}
+
+html body {
+    cursor: default;
+}
