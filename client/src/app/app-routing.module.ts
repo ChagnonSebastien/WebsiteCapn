@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
-import { GenericTextComponent } from './generic-text/generic-text.component';
+import { GenericTextEditorComponent } from './generic-text/generic-text-editor.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'temp', component: GenericTextComponent },
+    { path: 'temp', component: GenericTextEditorComponent },
     { path: 'not-found', component: ErrorComponent },
     { path: '**', redirectTo: '/not-found' }
 ];

@@ -8,14 +8,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
-import { GenericTextComponent } from './generic-text/generic-text.component';
+import { GenericTextEditorComponent } from './generic-text/generic-text-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ErrorComponent,
-    GenericTextComponent
+    GenericTextEditorComponent
   ],
   imports: [
     BrowserModule,

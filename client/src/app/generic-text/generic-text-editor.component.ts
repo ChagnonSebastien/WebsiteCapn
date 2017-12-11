@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Quill } from 'quill';
 
 @Component({
-  selector: 'app-generic-text',
-  templateUrl: './generic-text.component.html',
-  styleUrls: ['./generic-text.component.css']
+  selector: 'app-generic-text-editor',
+  templateUrl: './generic-text-editor.component.html',
+  styleUrls: ['./generic-text-editor.component.css']
 })
-export class GenericTextComponent implements OnInit {
+export class GenericTextEditorComponent implements OnInit {
 
   private editor: Quill;
   public options =

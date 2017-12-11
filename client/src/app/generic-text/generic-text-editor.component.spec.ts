@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenericTextComponent } from './generic-text.component';
+import { GenericTextComponent } from './generic-text-editor.component';
 
 describe('GenericTextComponent', () => {
   let component: GenericTextComponent;
