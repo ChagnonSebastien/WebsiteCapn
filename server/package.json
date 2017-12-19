@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Backend of clubcapn.com",
+  "dependencies": {
+    "@types/node": "^8.5.1",
+    "concurrently": "^3.5.1",
+    "express": "^4.16.2",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.2.3",
+    "mongodb": "^3.0.0-rc0",
+    "typescript": "^2.6.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "concurrently --kill-others \"tsc -w \" \"nodemon dist/index.js\"",
+    "test": "test"
+  },
+  "author": "Sebastien Chagnon",
+  "license": "GPL-3.0"
+}
