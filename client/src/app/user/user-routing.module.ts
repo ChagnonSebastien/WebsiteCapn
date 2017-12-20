@@ -1,10 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { ErrorComponent } from './../error/error.component';
-import { GenericTextEditorComponent } from './../generic-text/generic-text-editor.component';
-import { HomeComponent } from './../home/home.component';
-import { BaseComponent } from './../base/base.component';
+import { ErrorComponent } from './error/error.component';
+import { GenericTextEditorComponent } from './generic-text/generic-text-editor.component';
+import { HomeComponent } from './home/home.component';
+import { BaseComponent } from './base/base.component';
 
 const userRoutes: Routes = [
     { path: '', component: BaseComponent, children: [
