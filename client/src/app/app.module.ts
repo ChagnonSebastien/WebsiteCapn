@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { GenericTextEditorComponent } from './generic-text/generic-text-editor.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { BaseComponent } from './base/base.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     HomeComponent,
     ErrorComponent,
     GenericTextEditorComponent,
-    NavbarComponent
+    NavbarComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,
