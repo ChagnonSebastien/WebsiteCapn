@@ -9,13 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { GenericTextEditorComponent } from './generic-text/generic-text-editor.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ErrorComponent,
-    GenericTextEditorComponent
+    GenericTextEditorComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
