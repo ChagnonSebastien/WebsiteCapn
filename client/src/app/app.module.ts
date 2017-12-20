@@ -1,3 +1,4 @@
+import { NavbarComponent } from './user/navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';

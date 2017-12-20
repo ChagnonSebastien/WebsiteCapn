@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { BaseComponent } from './base/base.component';
 import { ErrorComponent } from './error/error.component';
 import { QuillModule } from 'ngx-quill';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { QuillModule } from 'ngx-quill';
     BaseComponent,
     HomeComponent,
     GenericTextEditorComponent,
-    ErrorComponent
+    ErrorComponent,
+    NavbarComponent
   ],
   entryComponents: [ BaseComponent ]
 })
