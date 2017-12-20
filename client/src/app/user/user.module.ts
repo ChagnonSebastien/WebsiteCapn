@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   imports: [
+    CommonModule,
     UserRoutingModule,
     QuillModule
   ],

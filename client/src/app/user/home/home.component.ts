@@ -8,12 +8,8 @@ import { ActivatedRoute, Data } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.route.data.subscribe((data: Data) => {
-      console.log(data['routes']);
-    });
-  }
+  ngOnInit() { }
 
 }
