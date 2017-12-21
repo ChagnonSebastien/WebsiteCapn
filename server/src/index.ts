@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as http from 'http';
+import * as cors from 'cors';
 import { Database } from './database';
 
 const port = 5000;
@@ -24,7 +25,7 @@ function startServer(): http.Server {
 }
 
 function config(app: express.Express): void {
-
+    app.use(cors());
 }
 
 function routes(app: express.Express): void {
