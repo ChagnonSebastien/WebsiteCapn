@@ -1,13 +1,15 @@
-import { Observable } from 'rxjs/Observable';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router/src/router_state';
-import { Resolve } from '@angular/router/src/interfaces';
 import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
+import { Http } from '@angular/http';
+
+import { Observable } from 'rxjs/Observable';
+
 import { RouteNode } from './route-node';
 
 @Injectable()
 export class RouteResolverService implements Resolve<RouteNode> {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<RouteNode> | Promise<RouteNode> | RouteNode {
     return new Promise<RouteNode>((resolve) => {
