@@ -7,9 +7,8 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
   Database.getInstance()
   .then(database => {
     database.connection.collection('navigation').findOne('').then((result: any) => {
-      console.log(JSON.stringify(result));
+      res.send(result);
     });
-    res.send(database.connection.databaseName);
   });
 })
 
