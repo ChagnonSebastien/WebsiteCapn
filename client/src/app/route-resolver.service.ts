@@ -15,8 +15,15 @@ export class RouteResolverService implements Resolve<RouteNode> {
       courseRoutes.children.push(new RouteNode('Cours pour enfants', 'enfants'));
       courseRoutes.children.push(new RouteNode('Cours pour adultes', 'adultes'));
 
+      const clubRoutes = new RouteNode('Club de compétition', 'club');
+      clubRoutes.children.push(new RouteNode('Natation', 'natation'));
+      clubRoutes.children.push(new RouteNode('Nage synchronisée', 'synchro'));
+      clubRoutes.children.push(new RouteNode('Sauvetage sportif', 'sauvetage'));
+      clubRoutes.children.push(new RouteNode('Maitres Nageurs', 'maitres'));
+
       const routes = new RouteNode('Accueil', 'root');
       routes.children.push(courseRoutes);
+      routes.children.push(clubRoutes);
       routes.children.push(new RouteNode('Camp de jour', 'camp'));
       routes.children.push(new RouteNode('Formations de sauvetage', 'sauvetage'));
 

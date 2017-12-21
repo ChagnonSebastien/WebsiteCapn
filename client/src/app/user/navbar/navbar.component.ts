@@ -1,7 +1,7 @@
 import { RouteNode } from './../../route-node';
 import { UserModule } from './../user.module';
 import { BaseComponent } from '../base/base.component';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Data, RouterModule } from '@angular/router';
 import {
   Component,
   OnInit,
@@ -54,9 +54,10 @@ export class NavbarComponent implements OnInit {
   }
 
   private createComponentFactorySync(compiler: Compiler, metadata: Component, componentClass: any): ComponentFactory<any> {
-    const decoratedCmp = Component(metadata)(class { });
+    const cmpClass = componentClass || class RuntimeComponent { name = 'Denys'; };
+    const decoratedCmp = Component(metadata)(cmpClass);
 
-    @NgModule({ imports: [CommonModule, UserRoutingModule, UserModule], declarations: [decoratedCmp] })
+    @NgModule({ imports: [CommonModule, RouterModule], declarations: [decoratedCmp] })
     class RuntimeComponentModule { }
 
     const module: ModuleWithComponentFactories<any> = compiler.compileModuleAndAllComponentsSync(RuntimeComponentModule);
@@ -78,12 +79,12 @@ export class NavbarComponent implements OnInit {
         aria-label="Toggle navigation">`,
       `<span class="navbar-toggler-icon"></span>`,
       `</button>`,
-      `<a class="navbar-brand" [routerLink]="['/']">`,
+      `<a class="navbar-brand" [routerLink]="['/app']">`,
       `<img src="/assets/logo_bleu_rev.svg" alt="logo" id="logo">`,
       `</a>`,
       `<div class="collapse navbar-collapse" id="navbarNavDropdown">`,
       `<ul class="navbar-nav">`,
-      `<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']">`,
+      `<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/app']">`,
       `<a class="nav-link">${routes.fullName}<span class="sr-only">(current)</span></a>`,
       `</li>`
     );
