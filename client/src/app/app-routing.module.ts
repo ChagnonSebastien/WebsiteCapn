@@ -1,16 +1,11 @@
+import { RouteResolverService } from './route-resolver.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { ErrorComponent } from './error/error.component';
-import { GenericTextEditorComponent } from './generic-text/generic-text-editor.component';
-
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'temp', component: GenericTextEditorComponent },
-    { path: 'not-found', component: ErrorComponent },
-    { path: '**', redirectTo: '/not-found' }
+    { path: 'app', loadChildren: 'app/user/user.module#UserModule', resolve: { routes: RouteResolverService } },
+    { path: '', redirectTo: '/app', pathMatch: 'full' },
+    { path: '**', redirectTo: '/app/not-found' }
 ];
 
 @NgModule({
