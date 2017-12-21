@@ -1,6 +1,3 @@
-import { RouteNode } from './../../route-node';
-import { UserModule } from './../user.module';
-import { BaseComponent } from '../base/base.component';
 import { ActivatedRoute, Data, RouterModule } from '@angular/router';
 import {
   Component,
@@ -15,7 +12,11 @@ import {
   ModuleWithComponentFactories
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { UserRoutingModule } from '../user-routing.module';
+import { RouteNode } from '../../route-node';
+import { UserModule } from '../user.module';
+import { BaseComponent } from '../base/base.component';
 
 @Component({
   selector: 'app-navbar',
