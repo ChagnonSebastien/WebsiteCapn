@@ -1,9 +1,9 @@
-export {}
-const express = require('express')
+import * as express from 'express';
+
 const router = express.Router()
 
 // define the home page route
-router.get('/', function (req, res) {
+router.get('/', (req: express.Request, res: express.Response, next: express.NextFunction) => {
   res.send('NAVIGATION')
 })
 

@@ -1,10 +1,10 @@
-export {}
-const express = require('express');
+import * as express from 'express';
+
 const app = express();
 
-const path = require('./routers/navigation');
+const navigation = require('./routers/navigation');
 
-app.use('/navigation', path);
+app.use('/navigation', navigation);
 
 const port = 5000;
 

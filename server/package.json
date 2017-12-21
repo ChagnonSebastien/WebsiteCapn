@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Backend of clubcapn.com",
   "dependencies": {
+    "@types/express": "^4.11.0",
     "@types/node": "^8.5.1",
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
