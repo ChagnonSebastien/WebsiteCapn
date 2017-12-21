@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouteResolverService } from './route-resolver.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { RouteResolverService } from './route-resolver.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
   providers: [ RouteResolverService ],
   bootstrap: [ AppComponent ]
