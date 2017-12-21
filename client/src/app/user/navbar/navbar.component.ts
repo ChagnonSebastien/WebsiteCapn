@@ -55,8 +55,7 @@ export class NavbarComponent implements OnInit {
   }
 
   private createComponentFactorySync(compiler: Compiler, metadata: Component, componentClass: any): ComponentFactory<any> {
-    const cmpClass = componentClass || class RuntimeComponent { name = 'Denys'; };
-    const decoratedCmp = Component(metadata)(cmpClass);
+    const decoratedCmp = Component(metadata)(class RuntimeNavbar{});
 
     @NgModule({ imports: [CommonModule, RouterModule], declarations: [decoratedCmp] })
     class RuntimeComponentModule { }
@@ -91,6 +90,10 @@ export class NavbarComponent implements OnInit {
     );
 
     routes.children.forEach((routeNode: RouteNode) => {
+      if (routeNode.placement !== 'navbar') {
+        return;
+      }
+
       if (routeNode.children.length > 0) {
         template.push(
           `<li class="nav-item dropdown" routerLinkActive="active">`,

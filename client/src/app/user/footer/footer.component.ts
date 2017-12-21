@@ -55,7 +55,7 @@ export class FooterComponent implements OnInit {
   }
 
   private createComponentFactorySync(compiler: Compiler, metadata: Component, componentClass: any): ComponentFactory<any> {
-    const decoratedCmp = Component(metadata)(class {});
+    const decoratedCmp = Component(metadata)(class RunetimeFooter{});
 
     @NgModule({ imports: [CommonModule, RouterModule], declarations: [decoratedCmp] })
     class RuntimeComponentModule { }
@@ -79,6 +79,10 @@ export class FooterComponent implements OnInit {
     );
 
     routes.children.forEach((routeNode: RouteNode) => {
+      if (routeNode.placement !== 'footer') {
+        return;
+      }
+
       template.push(`<div [routerLink]="['/app', '${routeNode.pathName}']">${routeNode.fullName}</div>`);
     });
 

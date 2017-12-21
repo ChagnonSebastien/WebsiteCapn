@@ -1,7 +1,7 @@
 export class RouteNode {
     public children: RouteNode[];
 
-    constructor(public fullName: String, public pathName: String) {
+    constructor(public fullName: string, public pathName: string, public placement?: string) {
         this.children = [];
     }
 }
