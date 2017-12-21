@@ -1,13 +1,33 @@
 import * as express from 'express';
-
-const app = express();
-
-const navigation = require('./routers/navigation');
-
-app.use('/navigation', navigation);
+import * as http from 'http';
+import { Database } from './database';
 
 const port = 5000;
 
-app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
-});
+Database.getInstance().then(database => {
+    if (database.connection) {
+        startServer();
+    } else {
+        console.log('Error while starting the server. Exiting now.');
+    }
+})
+
+function startServer(): http.Server {
+    const app = express();
+
+    config(app);
+    routes(app);
+
+    return app.listen(port, () => {
+        console.log(`Server started on port ${port}`);
+    });
+}
+
+function config(app: express.Express): void {
+
+}
+
+function routes(app: express.Express): void {
+    const navigation = require('./routers/navigation');
+    app.use('/navigation', navigation);
+}
