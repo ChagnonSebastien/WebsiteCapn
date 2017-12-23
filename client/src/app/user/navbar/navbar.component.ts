@@ -52,6 +52,7 @@ export class NavbarComponent implements OnInit {
         } else if (val.urlAfterRedirects.split('/').length > 3) {
           this.buildNavbar();
         }
+        window.scrollTo(0, 0);
       }
     });
   }
