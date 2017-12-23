@@ -4,7 +4,7 @@ import { Quill } from 'quill';
 @Component({
   selector: 'app-generic-text-editor',
   templateUrl: './generic-text-editor.component.html',
-  styleUrls: ['./generic-text-editor.component.css']
+  styleUrls: ['./generic-text-editor.component.scss']
 })
 export class GenericTextEditorComponent implements OnInit {
 

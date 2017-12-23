@@ -40,7 +40,7 @@ export class FooterComponent implements OnInit {
       const metadata = {
         selector: 'runtime-footer',
         template: this.buildFooterTemplate(data['routes']),
-        styleUrls: ['./footer.component.css']
+        styleUrls: ['./footer.component.scss']
       };
 
       const factory = this.createComponentFactorySync(this.compiler, metadata, null);
@@ -67,15 +67,20 @@ export class FooterComponent implements OnInit {
   private buildFooterTemplate(routes: RouteNode) {
     const template: String[] = [];
     template.push(
-      `<nav class="footer bg-primary text-white">`,
+      `<footer class="page-footer capn-color center-on-small-only">`,
+      `<div class="container">`,
+      `<div class="row">`,
+      `<div class="col-md-6">`,
+      `</div>`,
+      `<div class="col-md-6">`,
+      `<h5 class="title">Liens</h5>`,
+      `<ul>`
+      /* `<nav class="footer bg-primary text-white">`,
       `<div class="container">`,
       `<div class="row">`,
       `<div class="col-sm">`,
-      `<div>&copy; 2017 Tout droits réservés.</div>`,
-      `<div>Site conçu par Sébastien Chagnon</div>`,
       `<br>`,
-      `</div>`,
-      `<div class="col-sm">`
+      `<div class="col-sm">` */
     );
 
     routes.children.forEach((routeNode: RouteNode) => {
@@ -83,10 +88,21 @@ export class FooterComponent implements OnInit {
         return;
       }
 
-      template.push(`<div [routerLink]="['/app', '${routeNode.pathName}']">${routeNode.fullName}</div>`);
+      template.push(`<li><a [routerLink]="['/app', '${routeNode.pathName}']">${routeNode.fullName}</a></li>`);
     });
 
-    template.push(`</div></div></div></nav>`);
+    template.push(
+      `</ul>`,
+      `</div>`,
+      `</div>`,
+      `</div>`,
+      `<div class="footer-copyright">`,
+      `<div class="container-fluid">`,
+      `Site conçu par Sébastien Chagnon &copy; 2017 Tout droits réservés.`,
+      `</div>`,
+      `</div>`,
+      `</footer>`
+    );
 
     return template.join('');
   }

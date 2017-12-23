@@ -1,0 +1,10 @@
+.site-wrapper { 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+} 
+ 
+main { 
+    margin-top: 7rem; 
+    flex: 1; 
+}
