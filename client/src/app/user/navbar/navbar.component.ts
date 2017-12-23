@@ -1,5 +1,6 @@
+import { RouteNode } from './../../route-node';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { ActivatedRoute, Data, RouterModule } from '@angular/router';
+import { ActivatedRoute, Data, RouterModule, Router, NavigationEnd, Event } from '@angular/router';
 import {
   Component,
   OnInit,
@@ -16,7 +17,6 @@ import {
 import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from '../user-routing.module';
-import { RouteNode } from '../../route-node';
 import { UserModule } from '../user.module';
 import { BaseComponent } from '../base/base.component';
 
@@ -26,12 +26,14 @@ import { BaseComponent } from '../base/base.component';
 })
 export class NavbarComponent implements OnInit {
 
-  @ViewChild('container', { read: ViewContainerRef })
-  container: ViewContainerRef;
+  @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
+
+  private routes: RouteNode;
 
   private componentRef: ComponentRef<{}>;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private componentFactoryResolver: ComponentFactoryResolver,
     private compiler: Compiler
@@ -39,21 +41,36 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: Data) => {
-      const metadata = {
-        selector: 'runtime-navbar',
-        template: this.buildNavbarTemplate(data['routes']),
-        styleUrls: ['./navbar.component.scss']
-      };
-
-      const factory = this.createComponentFactorySync(this.compiler, metadata, null);
-
-      if (this.componentRef) {
-        this.componentRef.destroy();
-        this.componentRef = null;
-      }
-
-      this.componentRef = this.container.createComponent(factory);
+      this.routes = data['routes'];
+      this.buildNavbar();
     });
+
+    this.router.events.subscribe((val: Event) => {
+      if (val instanceof NavigationEnd) {
+        if (this.container.element.nativeElement.clientWidth < 992) {
+          this.buildNavbar();
+        } else if (val.urlAfterRedirects.split('/').length > 3) {
+          this.buildNavbar();
+        }
+      }
+    });
+  }
+
+  private buildNavbar() {
+    const metadata = {
+      selector: 'runtime-navbar',
+      template: this.buildNavbarTemplate(),
+      styleUrls: ['./navbar.component.scss']
+    };
+
+    const factory = this.createComponentFactorySync(this.compiler, metadata, null);
+
+    if (this.componentRef) {
+      this.componentRef.destroy();
+      this.componentRef = null;
+    }
+
+    this.componentRef = this.container.createComponent(factory);
   }
 
   private createComponentFactorySync(compiler: Compiler, metadata: Component, componentClass: any): ComponentFactory<any> {
@@ -70,7 +87,7 @@ export class NavbarComponent implements OnInit {
     return module.componentFactories.find(f => f.componentType === decoratedCmp);
   }
 
-  private buildNavbarTemplate(routes: RouteNode) {
+  private buildNavbarTemplate() {
     const template: String[] = [];
     template.push(
       `<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark capn-color fixed-top scrolling-navbar">`,
@@ -80,11 +97,11 @@ export class NavbarComponent implements OnInit {
       `<links>`,
       `<ul class="navbar-nav mr-auto">`,
       `<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">`,
-      `<a class="nav-link waves-light" mdbRippleRadius [routerLink]="['/app']">${routes.fullName}</a>`,
+      `<a class="nav-link waves-light" mdbRippleRadius [routerLink]="['/app']">${this.routes.fullName}</a>`,
       `</li>`
     );
 
-    routes.children.forEach((routeNode: RouteNode) => {
+    this.routes.children.forEach((routeNode: RouteNode) => {
       if (routeNode.placement !== 'navbar') {
         return;
       }

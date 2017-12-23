@@ -75,12 +75,6 @@ export class FooterComponent implements OnInit {
       `<div class="col-md-6">`,
       `<h5 class="title">Liens</h5>`,
       `<ul>`
-      /* `<nav class="footer bg-primary text-white">`,
-      `<div class="container">`,
-      `<div class="row">`,
-      `<div class="col-sm">`,
-      `<br>`,
-      `<div class="col-sm">` */
     );
 
     routes.children.forEach((routeNode: RouteNode) => {
