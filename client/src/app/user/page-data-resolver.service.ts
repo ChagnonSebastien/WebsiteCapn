@@ -12,7 +12,6 @@ export class PageDataResolverService implements Resolve<string> {
   constructor(private http: Http) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<string> | Promise<string> | string {
-    console.log(route, state);
     return route.url.map((segment: UrlSegment) => {
       return segment.path;
     }).join('/');

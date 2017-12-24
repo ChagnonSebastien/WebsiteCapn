@@ -6,7 +6,7 @@ import { GenericTextComponent } from './dynamic/generic-text/generic-text.compon
 
 @Component({
   selector: 'app-modular-page',
-  template: '<h1>Module</h1><div #container></div>',
+  template: '<div #container></div>',
   styleUrls: ['./modular-page.component.scss']
 })
 export class ModularPageComponent implements OnInit {
@@ -20,15 +20,14 @@ export class ModularPageComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: Data) => {
-      console.log(data['pageData']);
+      // console.log(data['pageData']);
     });
 
     const factory = this.componentFactoryResolver.resolveComponentFactory(GenericTextComponent);
     this.componentRef = this.container.createComponent(factory);
 
-    /* const instance = <DynamicComponent> this.componentRef.instance;
-    instance.context = this.context; */
-
+    const instance = <DynamicComponent> this.componentRef.instance;
+    instance.context = { innerHtml: '<div class="row"><div class="col col-6">left</div><div class="col col-6">right</div></div>'};
   }
 
 }
