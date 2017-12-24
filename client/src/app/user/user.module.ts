@@ -9,6 +9,7 @@ import { QuillModule } from 'ngx-quill';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ModularPageComponent } from './modular-page/modular-page.component';
+import { PageDataResolverService } from './page-data-resolver.service';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { ModularPageComponent } from './modular-page/modular-page.component';
     ErrorComponent,
     NavbarComponent,
     FooterComponent,
-    ModularPageComponent
+    ModularPageComponent,
+    PageDataResolverService
   ],
   entryComponents: [ BaseComponent ]
 })
