@@ -47,11 +47,10 @@ export class NavbarComponent implements OnInit {
 
     this.router.events.subscribe((val: Event) => {
       if (val instanceof NavigationEnd) {
-        if (this.container.element.nativeElement.clientWidth < 992) {
-          this.buildNavbar();
-        } else if (val.urlAfterRedirects.split('/').length > 3) {
+        if (this.container.element.nativeElement.clientWidth < 992 || val.urlAfterRedirects.split('/').length > 3) {
           this.buildNavbar();
         }
+
         window.scrollTo(0, 0);
       }
     });
