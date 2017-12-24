@@ -8,6 +8,7 @@ import { ErrorComponent } from './error/error.component';
 import { QuillModule } from 'ngx-quill';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { ModularPageComponent } from './modular-page/modular-page.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     ErrorComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ModularPageComponent
   ],
   entryComponents: [ BaseComponent ]
 })
