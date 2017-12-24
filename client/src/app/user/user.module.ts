@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ModularPageComponent } from './modular-page/modular-page.component';
 import { PageDataResolverService } from './page-data-resolver.service';
+import { GenericTextComponent } from './modular-page/dynamic/generic-text/generic-text.component';
 
 @NgModule({
   imports: [
@@ -23,9 +24,12 @@ import { PageDataResolverService } from './page-data-resolver.service';
     ErrorComponent,
     NavbarComponent,
     FooterComponent,
-    ModularPageComponent
+    ModularPageComponent,
+    GenericTextComponent
   ],
   providers: [ PageDataResolverService ],
-  entryComponents: [ BaseComponent ]
+  entryComponents: [
+    GenericTextComponent
+  ]
 })
 export class UserModule { }
