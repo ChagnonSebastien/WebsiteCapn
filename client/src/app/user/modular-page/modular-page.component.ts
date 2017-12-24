@@ -1,4 +1,6 @@
+import { ActivatedRoute, Data } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-modular-page',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModularPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe((data: Data) => {
+      console.log(data['pageData']);
+    });
   }
 
 }

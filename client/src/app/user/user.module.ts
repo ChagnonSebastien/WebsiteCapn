@@ -23,9 +23,9 @@ import { PageDataResolverService } from './page-data-resolver.service';
     ErrorComponent,
     NavbarComponent,
     FooterComponent,
-    ModularPageComponent,
-    PageDataResolverService
+    ModularPageComponent
   ],
+  providers: [ PageDataResolverService ],
   entryComponents: [ BaseComponent ]
 })
 export class UserModule { }
