@@ -1,4 +1,3 @@
-import { GenericTextEditorComponent } from './generic-text/generic-text-editor.component';
 import { HomeComponent } from './home/home.component';
 import { UserRoutingModule } from './user-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +18,6 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     BaseComponent,
     HomeComponent,
-    GenericTextEditorComponent,
     ErrorComponent,
     NavbarComponent,
     FooterComponent
