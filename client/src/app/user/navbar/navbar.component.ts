@@ -16,8 +16,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UserRoutingModule } from '../user-routing.module';
-import { UserModule } from '../user.module';
 import { BaseComponent } from '../base/base.component';
 
 @Component({

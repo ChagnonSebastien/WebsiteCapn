@@ -1,3 +1,4 @@
+import { ProgramComponent } from './dynamic/program/program.component';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Component, OnInit, ComponentFactoryResolver, ViewChild, ViewContainerRef, ComponentRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
@@ -22,7 +23,7 @@ export class ModularPageComponent implements OnInit {
       // console.log(data['pageData']);
     });
 
-    const factory = this.componentFactoryResolver.resolveComponentFactory(GenericTextComponent);
+    const factory = this.componentFactoryResolver.resolveComponentFactory(ProgramComponent);
     this.componentRef = this.container.createComponent(factory);
 
     const instance = <DynamicComponent> this.componentRef.instance;

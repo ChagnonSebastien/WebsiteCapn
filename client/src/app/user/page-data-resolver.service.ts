@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { RouteNode } from '../route-node';
-import { UrlSegment } from '@angular/router/src/url_tree';
+import { UrlSegment } from '@angular/router';
 
 @Injectable()
 export class PageDataResolverService implements Resolve<string> {
