@@ -1,5 +1,5 @@
+import { MDBBootstrapModules } from 'ng-mdb-pro';
 import { RouteNode } from './../../route-node';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ActivatedRoute, Data, RouterModule, Router, NavigationEnd, Event } from '@angular/router';
 import {
   Component,
@@ -77,7 +77,7 @@ export class NavbarComponent implements OnInit {
     const decoratedCmp = Component(metadata)(class RuntimeNavbar{});
 
     @NgModule({
-      imports: [CommonModule, RouterModule, MDBBootstrapModule.forRoot()],
+      imports: [CommonModule, RouterModule, MDBBootstrapModules.forRoot()],
       schemas: [ NO_ERRORS_SCHEMA ],
       declarations: [decoratedCmp]
     })
@@ -106,9 +106,9 @@ export class NavbarComponent implements OnInit {
         return;
       }
 
-      if (routeNode.children.length > 0 && routeNode.children.length < 0) {
+      if (routeNode.children.length > 0) {
         template.push(
-          `<li class="nav-item dropdown" dropdown>`,
+          `<li class="nav-item dropdown" dropdown routerLinkActive="active">`,
           `<a dropdownToggle mdbRippleRadius type="button" class="nav-link dropdown-toggle waves-light" mdbRippleRadius>`,
           routeNode.fullName,
           `<span class="caret"></span>`,

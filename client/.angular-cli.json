@@ -20,14 +20,16 @@
       "prefix": "app",
       "styles": [
         "../node_modules/font-awesome/scss/font-awesome.scss",
-        "../node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
-        "../node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+        "../node_modules/ng-mdb-pro/assets/scss/bootstrap/bootstrap.scss",
+        "../node_modules/ng-mdb-pro/assets/scss/mdb.scss", 
         "../node_modules/quill/dist/quill.snow.css",
         "../node_modules/quill/dist/quill.bubble.css",
         "styles.scss"
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.js",
+        "../node_modules/easy-pie-chart/dist/easypiechart.js",
+        "../node_modules/screenfull/dist/screenfull.js",
         "../node_modules/hammerjs/hammer.min.js"
       ],
       "environmentSource": "environments/environment.ts",

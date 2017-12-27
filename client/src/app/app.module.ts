@@ -1,3 +1,4 @@
+import { MDBBootstrapModules, MDBSpinningPreloader } from 'ng-mdb-pro';
 import { NavbarComponent } from './user/navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -8,8 +9,6 @@ import { AppComponent } from './app.component';
 import { RouteResolverService } from './route-resolver.service';
 import { HttpModule } from '@angular/http';
 
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -18,10 +17,10 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModules.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [ RouteResolverService ],
+  providers: [ RouteResolverService, MDBSpinningPreloader ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
