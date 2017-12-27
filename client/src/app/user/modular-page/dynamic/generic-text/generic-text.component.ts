@@ -3,8 +3,7 @@ import { DynamicComponent } from '../dynamic.component';
 
 @Component({
   selector: 'app-generic-text',
-  templateUrl: './generic-text.component.html',
-  styleUrls: ['./generic-text.component.scss']
+  template: '<div class="container" #container></div>'
 })
 export class GenericTextComponent extends DynamicComponent implements OnInit {
 

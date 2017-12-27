@@ -39,8 +39,7 @@ export class FooterComponent implements OnInit {
     this.route.data.subscribe((data: Data) => {
       const metadata = {
         selector: 'runtime-footer',
-        template: this.buildFooterTemplate(data['routes']),
-        styleUrls: ['./footer.component.scss']
+        template: this.buildFooterTemplate(data['routes'])
       };
 
       const factory = this.createComponentFactorySync(this.compiler, metadata, null);

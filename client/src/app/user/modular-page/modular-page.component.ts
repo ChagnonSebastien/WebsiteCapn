@@ -6,8 +6,7 @@ import { GenericTextComponent } from './dynamic/generic-text/generic-text.compon
 
 @Component({
   selector: 'app-modular-page',
-  template: '<div #container></div>',
-  styleUrls: ['./modular-page.component.scss']
+  template: '<div #container></div>'
 })
 export class ModularPageComponent implements OnInit {
 

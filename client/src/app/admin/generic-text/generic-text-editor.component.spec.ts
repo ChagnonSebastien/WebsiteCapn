@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenericTextComponent } from './generic-text-editor.component';
+import { GenericTextEditorComponent } from './generic-text-editor.component';
 
 describe('GenericTextComponent', () => {
-  let component: GenericTextComponent;
-  let fixture: ComponentFixture<GenericTextComponent>;
+  let component: GenericTextEditorComponent;
+  let fixture: ComponentFixture<GenericTextEditorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericTextComponent ]
+      declarations: [ GenericTextEditorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GenericTextComponent);
+    fixture = TestBed.createComponent(GenericTextEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
