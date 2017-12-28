@@ -6,7 +6,7 @@ import { RouteResolverService } from './route-resolver.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
 import { ModularPageComponent } from './user/modular-page/modular-page.component';
-import { PageDataResolverService } from './user/page-data-resolver.service';
+import { PageDataResolverService } from './user/modular-page/page-data-resolver.service';
 
 const appRoutes: Routes = [
     { path: 'app', component: BaseComponent, resolve: { routes: RouteResolverService }, children: [

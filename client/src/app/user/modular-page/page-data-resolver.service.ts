@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { RouteNode } from '../route-node';
+import { RouteNode } from '../../route-node';
 import { UrlSegment } from '@angular/router';
 
 @Injectable()

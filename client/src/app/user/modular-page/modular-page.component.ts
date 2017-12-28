@@ -1,5 +1,5 @@
 import { ProgramComponent } from './dynamic/program/program.component';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Data, UrlSegment } from '@angular/router';
 import { Component, OnInit, ComponentFactoryResolver, ViewChild, ViewContainerRef, ComponentRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { DynamicComponent } from './dynamic/dynamic.component';
@@ -20,7 +20,9 @@ export class ModularPageComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: Data) => {
-      // console.log(data['pageData']);
+      console.log(this.route.snapshot.url.map((segment: UrlSegment) => {
+        return segment.path;
+      }).join('/'));
     });
 
     const factory = this.componentFactoryResolver.resolveComponentFactory(ProgramComponent);

@@ -15,7 +15,7 @@ import { RouteResolverService } from './route-resolver.service';
 import { HttpModule } from '@angular/http';
 import { ModularPageComponent } from './user/modular-page/modular-page.component';
 import { FooterComponent } from './user/footer/footer.component';
-import { PageDataResolverService } from './user/page-data-resolver.service';
+import { PageDataResolverService } from './user/modular-page/page-data-resolver.service';
 
 @NgModule({
   declarations: [
