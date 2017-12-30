@@ -29,7 +29,8 @@ export class ModularPageComponent implements OnInit {
     this.componentRef = this.container.createComponent(factory);
 
     const instance = <DynamicComponent> this.componentRef.instance;
-    instance.context = { innerHtml: '<div class="row"><div class="col col-6">left</div><div class="col col-6">right</div></div>'};
+    instance.context = { innerHtml: '<div class="row"><div class="col col-6">left</div><div class="col col-6">right</div></div>',
+    programID: 26772};
   }
 
 }

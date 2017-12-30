@@ -14,7 +14,6 @@ export class Category {
             targetSubcategory = new Subcategory(activity.SubCategoryName);
             this.subcategories.push(targetSubcategory);
         }
-        console.log(activity);
         targetSubcategory.newActivity(activity);
     }
 
