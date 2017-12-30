@@ -1,20 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, UrlSegment, Router } from '@angular/router';
 import { Http, Response } from '@angular/http';
+
 import { Observable } from 'rxjs/Observable';
 
+import { SERVER_URL, SERVER_PORT } from './../../config';
 import { RouteNode } from '../../route-node';
-import { UrlSegment } from '@angular/router';
 
 @Injectable()
-export class PageDataResolverService implements Resolve<string> {
+export class PageDataResolverService implements Resolve<{}[]> {
 
-  constructor(private http: Http) { }
+  constructor(private router: Router, private http: Http) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<string> | Promise<string> | string {
-    return route.url.map((segment: UrlSegment) => {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{}[]> | Promise<{}[]> | {}[] {
+    const path = route.url.map((segment: UrlSegment) => {
       return segment.path;
-    }).join('/');
+    }).join('_');
+
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(`http://${SERVER_URL}:${SERVER_PORT}/navigation/page/${path}`)
+        .toPromise()
+        .then((response: Response) => {
+          if (response.text() === '') {
+            this.router.navigate(['/app', 'not-found']);
+            resolve();
+          } else {
+            resolve(JSON.parse(response.text()));
+          }
+        })
+        .catch(reason => console.log(reason));
+    });
   }
 
 }
