@@ -43,4 +43,6 @@ function config(app: express.Express): void {
 function routes(app: express.Express): void {
     const navigation = require('./routers/navigation');
     app.use('/navigation', navigation);
+    const amiliaProxy = require('./routers/amilia-proxy');
+    app.use('/amilia-proxy', amiliaProxy);
 }
