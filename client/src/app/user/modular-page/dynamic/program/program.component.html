@@ -1,30 +1,26 @@
 <div class="container">
-  <h2>Programmation</h2>
-  <mdb-tabset #staticTabs [buttonClass]="'nav-tabs tabs-3 capn-color'" [contentClass]="'card'">
-    <mdb-tab heading="Profile">
-        <div class="row"> 
-            <div class="col-12">
-                <br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-            </div> 
-        </div>
-    </mdb-tab>
-    <mdb-tab heading="Follow">
-        <div class="row"> 
-            <div class="col-12">
-                <br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-            </div> 
-        </div>
-    </mdb-tab>
-    <mdb-tab heading="Contact">
-        <div class="row"> 
-            <div class="col-12">
-                <br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-            </div> 
-        </div>
-    </mdb-tab>
-  </mdb-tabset>
+    <h2>Programmation {{ programName }}</h2>
+    <mdb-tabset #staticTabs [buttonClass]="'nav-tabs tabs-3 capn-color'" [contentClass]="'card blue-grey lighten-5'">
+        <mdb-tab *ngFor="let category of categories" [heading]="category.name">
+            <mdb-squeezebox [multiple]="true" aria-multiselectable="true">
+                <mdb-item  *ngFor="let subcategory of category.subcategories">
+                    <mdb-item-head class="blue-grey lighten-5"> {{ subcategory.name }} </mdb-item-head>
+                    <mdb-item-body class="blue-grey lighten-5">
+                        <div class="row"> 
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let activity of subcategory.activities">
+                                <div class="card">
+                                    <div class="card-body z-depth-1-half">
+                                        <h4 class="card-title">{{ activity.name }}</h4>
+                                        <hr>
+                                        <p class="card-text">Places restantes: {{activity.spotsRemaining > 5 ? 'Plus de 5' : activity.spotsRemaining}}</p>
+                                        <button type="button" class="btn btn-primary waves-light" mdbRippleRadius>Voir dans le magasin</button>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </mdb-item-body>
+                </mdb-item>
+            </mdb-squeezebox>
+        </mdb-tab>
+    </mdb-tabset>
 </div>
