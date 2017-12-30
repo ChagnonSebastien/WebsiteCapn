@@ -8,8 +8,7 @@ import { SERVER_URL, SERVER_PORT } from '../../../../config';
 @Component({
   selector: 'app-program',
   templateUrl: './program.component.html',
-  styleUrls: [ './program.component.scss' ],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: [ './program.component.scss' ]
 })
 export class ProgramComponent extends DynamicComponent implements OnInit {
 
@@ -23,13 +22,16 @@ export class ProgramComponent extends DynamicComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get(`http://${SERVER_URL}:${SERVER_PORT}/amilia-proxy/programs/${this.context.programID}`)
-    .toPromise().then((value: Response) => {
-      this.processJson(JSON.parse(value.text()));
-    }).catch(reason => console.log(reason));
+    this.http
+      .get(`http://${SERVER_URL}:${SERVER_PORT}/amilia-proxy/programs/${this.context.programID}`)
+      .toPromise()
+      .then((value: Response) => {
+        this.processJson(JSON.parse(value.text()));
+      })
+      .catch(reason => console.log(reason));
   }
 
-  private processJson(value: any) {
+  private processJson(value: any): void {
     this.programName = value.Items[0].ProgramName;
     value.Items.forEach(activity => {
       let targetCategory = this.getCategory(activity.CategoryName)[0];
