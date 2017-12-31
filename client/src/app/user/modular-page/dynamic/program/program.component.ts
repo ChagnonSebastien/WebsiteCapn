@@ -15,10 +15,12 @@ export class ProgramComponent extends DynamicComponent implements OnInit {
   private type: ProgramType;
   private programName: String;
   private categories: Category[];
+  private loaded: boolean;
 
   constructor(private http: Http) {
     super();
     this.categories = [];
+    this.loaded = false;
   }
 
   ngOnInit() {
@@ -27,6 +29,7 @@ export class ProgramComponent extends DynamicComponent implements OnInit {
       .toPromise()
       .then((value: Response) => {
         this.processJson(JSON.parse(value.text()));
+        this.loaded = true;
       })
       .catch(reason => console.log(reason));
   }

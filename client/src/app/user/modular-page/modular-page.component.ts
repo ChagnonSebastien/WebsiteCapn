@@ -31,7 +31,6 @@ export class ModularPageComponent implements OnInit, OnDestroy {
       this.componentRefs = [];
 
       data['pageData'].forEach((componentData: any) => {
-        console.log(componentData);
         const factory = this.componentFactoryResolver.resolveComponentFactory(this.getComponent(componentData.type));
         const componentRef = this.container.createComponent(factory);
         this.componentRefs.push(componentRef);
@@ -39,7 +38,6 @@ export class ModularPageComponent implements OnInit, OnDestroy {
         const instance = <DynamicComponent> componentRef.instance;
         instance.context = componentData.context;
       });
-
     });
   }
 

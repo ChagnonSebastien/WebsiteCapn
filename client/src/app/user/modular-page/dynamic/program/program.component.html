@@ -1,4 +1,5 @@
-<div class="container">
+<div *ngIf="!loaded" class="container row justify-content-center"><mdb-spinner spinnerType="big" spinnerColor="blue"></mdb-spinner></div>
+<div *ngIf="loaded" class="container">
     <h2>Programmation {{ programName }}</h2>
     <mdb-tabset #staticTabs [buttonClass]="'nav-tabs tabs-3 capn-color'" [contentClass]="'card blue-grey lighten-5'">
         <mdb-tab *ngFor="let category of categories" [heading]="category.name">
