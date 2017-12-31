@@ -18,6 +18,7 @@ import { PageDataResolverService } from './user/modular-page/page-data-resolver.
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouteResolverService } from './route-resolver.service';
+import { AdminComponent } from './admin/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RouteResolverService } from './route-resolver.service';
     NavbarComponent,
     FooterComponent,
     GenericTextComponent,
-    ProgramComponent
+    ProgramComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
