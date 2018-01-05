@@ -19,6 +19,7 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { ModularPageComponent } from './user/modular-page/modular-page.component';
 import { FooterComponent } from './user/footer/footer.component';
 import { PageDataResolverService } from './user/modular-page/page-data-resolver.service';
+import { AdminComponent } from './admin/admin.component';
 import { NavigationEditorComponent } from './admin/navigation-editor/navigation-editor.component';
 import { NavigationEditorGroupComponent } from './admin/navigation-editor-group/navigation-editor-group.component';
 
