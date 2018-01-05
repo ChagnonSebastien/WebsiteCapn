@@ -20,6 +20,9 @@ import { AppComponent } from './app.component';
 import { RouteResolverService } from './route-resolver.service';
 import { AdminComponent } from './admin/admin/admin.component';
 
+import { SortablejsModule } from 'angular-sortablejs';
+import { NavigationEditorGroupComponent } from './admin/admin/navigation-editor-group/navigation-editor-group.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,8 @@ import { AdminComponent } from './admin/admin/admin.component';
     FooterComponent,
     GenericTextComponent,
     ProgramComponent,
-    AdminComponent
+    AdminComponent,
+    NavigationEditorGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,12 @@ import { AdminComponent } from './admin/admin/admin.component';
     HttpClientModule,
     HttpClientJsonpModule,
     MDBBootstrapModules.forRoot(),
-    JsonpModule
+    JsonpModule,
+    SortablejsModule.forRoot({
+      animation: 150,
+      handle: '.handle',
+      scrollSensitivity: 100
+    })
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
@@ -50,7 +59,8 @@ import { AdminComponent } from './admin/admin/admin.component';
   bootstrap: [ AppComponent ],
   entryComponents: [
     GenericTextComponent,
-    ProgramComponent
+    ProgramComponent,
+    NavigationEditorGroupComponent
   ]
 })
 export class AppModule { }

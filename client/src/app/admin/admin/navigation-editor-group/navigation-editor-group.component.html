@@ -1,0 +1,93 @@
+<div class="container" [sortablejs]="path.children">
+    <div class="card black-text" *ngFor="let item of path.children; let i = index">
+
+        <div mdbModal #deleteConfirmation="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-warning" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <p class="heading lead">Attention!</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="deleteConfirmation.hide()">
+                    <span aria-hidden="true" class="white-text">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                    <i class="fa fa-circle-o-notch fa-4x mb-3 animated rotateIn"></i>
+                    <p>Es-tu certain de vouloir supprimer cette page?</p>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn btn-primary-modal waves-light" mdbRippleRadius (click)="delete(i);deleteConfirmation.hide()">Oui</a>
+                    <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" (click)="deleteConfirmation.hide()" mdbRippleRadius>Non</a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div mdbModal #modifyConfirmation="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-warning" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <p class="heading lead">Attention!</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modifyConfirmation.hide()">
+                    <span aria-hidden="true" class="white-text">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                    <i class="fa fa-circle-o-notch fa-4x mb-3 animated rotateIn"></i>
+                    <p>Veux-tu sauvegarder avant de changer de page?</p>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn btn-primary-modal waves-light" mdbRippleRadius (click)="save.emit();modifyConfirmation.hide()">Oui</a>
+                    <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" (click)="modifyConfirmation.hide()" mdbRippleRadius>Non</a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col col-2 text-center">
+                    <div class="row">
+                        <i class="fa fa-arrows col handle fa-lg" [ngClass]="{'large-gap': !isChildren, 'small-gap': isChildren}"></i>
+                    </div>
+                    <div class="row" *ngIf="item.children.length === 0" (click)="modifyConfirmation.show()">
+                        <i class="fa fa-pencil col fa-lg" [ngClass]="{'large-gap': !isChildren, 'small-gap': isChildren}"></i>
+                    </div>
+                    <div class="row" *ngIf="item.children.length === 0" (click)="deleteConfirmation.show()">
+                        <i class="fa fa-trash col fa-lg" [ngClass]="{'large-gap': !isChildren, 'small-gap': isChildren}"></i>
+                    </div>
+                </div>
+                <div class="col">
+                    <form class="form-inline" *ngIf="!isChildren">
+                        <div class="form-group" (click)="updateCategory('navbar', i)">
+                            <input [name]="item.fullName + i" type="radio" [id]="item.fullName + i + '1'" [checked]="item.placement === 'navbar' ? 'checked' : ''">
+                            <label [for]="item.fullName + i + '1'">Navbar</label>
+                        </div>
+                        <div class="form-group" (click)="updateCategory('footer', i)">
+                            <input [name]="item.fullName + i" type="radio" [id]="item.fullName + i + '2'" [checked]="item.placement === 'footer' ? 'checked' : ''">
+                            <label [for]="item.fullName + i + '2'">Footer</label>
+                        </div>
+                    </form>
+                    <input type="text" [value]="item.fullName" (keyup)="updateName(name.value, i)" #name>
+                    <input type="text" [value]="item.pathName" (keyup)="updatePath(path.value, i)" #path>
+                </div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+
+        <div class="card-data grey lighten-1" *ngIf="!isChildren">
+            <app-navigation-editor-group [path]="item" [isChildren]="true" (save)="save.emit()"></app-navigation-editor-group>
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="new-page z-depth-1 hoverable" (click)="newPage()">
+        <h5>New Page</h5>
+    </div>
+</div>
