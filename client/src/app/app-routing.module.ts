@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
 
-import { AdminComponent } from './admin/admin/navigation-editor.component';
+import { AdminComponent } from './admin/admin/navigation-editor/navigation-editor.component';
 import { ProgramComponent } from './user/modular-page/dynamic/program/program.component';
 import { ErrorComponent } from './user/error/error.component';
 import { HomeComponent } from './user/home/home.component';

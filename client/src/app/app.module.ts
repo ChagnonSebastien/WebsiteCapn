@@ -18,7 +18,7 @@ import { PageDataResolverService } from './user/modular-page/page-data-resolver.
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouteResolverService } from './route-resolver.service';
-import { AdminComponent } from './admin/admin/navigation-editor.component';
+import { AdminComponent } from './admin/admin/navigation-editor/navigation-editor.component';
 
 import { SortablejsModule } from 'angular-sortablejs';
 import { NavigationEditorGroupComponent } from './admin/admin/navigation-editor-group/navigation-editor-group.component';

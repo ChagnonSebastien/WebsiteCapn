@@ -4,8 +4,8 @@ import { ActivatedRoute, Data, Router } from '@angular/router';
 
 import { SortablejsOptions } from 'angular-sortablejs';
 
-import { RouteNode } from './../../route-node';
-import { SERVER_URL, SERVER_PORT } from '../../config';
+import { RouteNode } from '../../../route-node';
+import { SERVER_URL, SERVER_PORT } from '../../../config';
 import { ModalDirective } from 'ng-mdb-pro/free';
 
 const headers = new Headers({ 'Content-Type': 'application/json' });
