@@ -1,4 +1,4 @@
-import { Http } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 
@@ -6,6 +6,8 @@ import { SortablejsOptions } from 'angular-sortablejs';
 
 import { RouteNode } from './../../route-node';
 import { SERVER_URL, SERVER_PORT } from '../../config';
+
+const headers = new Headers({ 'Content-Type': 'application/json' });
 
 @Component({
   selector: 'app-admin',
@@ -25,12 +27,50 @@ export class AdminComponent implements OnInit {
   }
 
   private saveAndRoute(routes: string[]): void {
-    this.save();
-    this.router.navigate(['admin'].concat(routes));
+    this.save()
+      .then((success: boolean) => {
+        if (success) {
+          this.router.navigate(['/admin'].concat(routes));
+        } else {
+          this.errorModal.show();
+        }
+      })
+      .catch((reason: any) => {
+        this.errorModal.show();
+        console.log(`Error while saving routes: ${reason}`);
+      });
   }
 
-  private save(): void {
-    this.http.post(`http://${SERVER_URL}:${SERVER_PORT}/navigation`, this.routes);
+  private saveAndStay(routes: string[]): void {
+    this.save()
+      .then((success: boolean) => {
+        if (success) {
+        } else {
+        }
+      })
+      .catch((reason: any) => {
+        console.log(`Error while saving routes: ${reason}`);
+      });
+  }
+
+  private save(): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+    this.http
+      .post(`http://${SERVER_URL}:${SERVER_PORT}/navigation`, JSON.stringify(this.routes), {headers: headers})
+      .toPromise()
+      .then((response: Response) => {
+        if (!response.json().error) {
+          resolve(true);
+        } else {
+          reject(response.json().reason);
+          resolve(false);
+        }
+      })
+      .catch((reason: any) => {
+        reject(reason);
+        resolve(false);
+      });
+    });
   }
 
 }
