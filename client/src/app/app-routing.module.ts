@@ -9,6 +9,7 @@ import { BaseComponent } from './user/base/base.component';
 import { RouteResolverService } from './route-resolver.service';
 import { ModularPageComponent } from './user/modular-page/modular-page.component';
 import { PageDataResolverService } from './user/modular-page/page-data-resolver.service';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
     { path: 'app', component: BaseComponent, resolve: { routes: RouteResolverService }, children: [
@@ -16,7 +17,11 @@ const appRoutes: Routes = [
         { path: 'not-found', component: ErrorComponent },
         { path: '**', component: ModularPageComponent, resolve: { pageData: PageDataResolverService } }
     ]},
-    { path: 'admin', component: NavigationEditorComponent, resolve: { routes: RouteResolverService }},
+    { path: 'admin', component: AdminComponent, children: [
+        { path: '', redirectTo: '/admin/path-editor', pathMatch: 'full' },
+        { path: 'path-editor', component: NavigationEditorComponent, resolve: { routes: RouteResolverService } },
+        { path: '**', component: ModularPageComponent, resolve: { pageData: PageDataResolverService } }
+    ]},
     { path: '', redirectTo: '/app/accueil', pathMatch: 'full' },
     { path: '**', redirectTo: '/app/not-found' }
 ];

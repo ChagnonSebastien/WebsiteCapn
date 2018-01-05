@@ -22,6 +22,7 @@ import { PageDataResolverService } from './user/modular-page/page-data-resolver.
 import { AdminComponent } from './admin/admin.component';
 import { NavigationEditorComponent } from './admin/navigation-editor/navigation-editor.component';
 import { NavigationEditorGroupComponent } from './admin/navigation-editor-group/navigation-editor-group.component';
+import { AuthentificationService } from './admin/authentification.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { NavigationEditorGroupComponent } from './admin/navigation-editor-group/
   providers: [
     RouteResolverService,
     MDBSpinningPreloader,
-    PageDataResolverService
+    PageDataResolverService,
+    AuthentificationService
   ],
   bootstrap: [ AppComponent ],
   entryComponents: [
