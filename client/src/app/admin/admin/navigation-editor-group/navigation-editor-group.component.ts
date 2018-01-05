@@ -10,7 +10,7 @@ import { SortablejsOptions } from 'angular-sortablejs';
 export class NavigationEditorGroupComponent implements OnInit {
 
     @Output()
-    save = new EventEmitter;
+    save: EventEmitter<string[]>;
 
     @Input()
     public isChildren: boolean;

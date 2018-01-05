@@ -6,6 +6,7 @@ import { SortablejsOptions } from 'angular-sortablejs';
 
 import { RouteNode } from './../../route-node';
 import { SERVER_URL, SERVER_PORT } from '../../config';
+import { ModalDirective } from 'ng-mdb-pro/free';
 
 const headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -15,6 +16,12 @@ const headers = new Headers({ 'Content-Type': 'application/json' });
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+
+  @ViewChild('success')
+  private successModal: ModalDirective;
+
+  @ViewChild('error')
+  private errorModal: ModalDirective;
 
   private routes: RouteNode;
 
@@ -26,7 +33,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  private saveAndRoute(routes: string[]): void {
+  private saveAndRoute(routes: any): void {
     this.save()
       .then((success: boolean) => {
         if (success) {
@@ -45,10 +52,13 @@ export class AdminComponent implements OnInit {
     this.save()
       .then((success: boolean) => {
         if (success) {
+          this.successModal.show();
         } else {
+          this.errorModal.show();
         }
       })
       .catch((reason: any) => {
+        this.errorModal.show();
         console.log(`Error while saving routes: ${reason}`);
       });
   }

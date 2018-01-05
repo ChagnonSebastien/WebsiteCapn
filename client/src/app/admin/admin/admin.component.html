@@ -3,21 +3,21 @@
     <div class="card">
       <h3 class="card-header capn-color white-text text-center">Éditeur des pages</h3>
       <div class="card-body grey lighten-4">
-        <app-navigation-editor-group [path]="routes" [isChildren]="false" (save)="save()"></app-navigation-editor-group>
+        <app-navigation-editor-group [path]="routes" [isChildren]="false" (save)="saveAndRoute($event)"></app-navigation-editor-group>
       </div>
       <div class="card-footer capn-color white-text text-center">
-        <p class="mb-0" (click)="style.show()">Sauvegarder</p>
+        <p class="mb-0" (click)="saveConfirmation.show()">Sauvegarder</p>
       </div>
     </div>
   </div>
 </div>
 
-<div mdbModal #style="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div mdbModal #saveConfirmation="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-notify modal-warning" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <p class="heading lead">Attention!</p>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="style.hide()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="saveConfirmation.hide()">
           <span aria-hidden="true" class="white-text">×</span>
         </button>
       </div>
@@ -28,9 +28,47 @@
         </div>
       </div>
       <div class="modal-footer justify-content-center">
-        <a type="button" class="btn btn-primary-modal waves-light" mdbRippleRadius (click)="save();style.hide()">Oui</a>
-        <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" (click)="style.hide()" mdbRippleRadius>Non</a>
+        <a type="button" class="btn btn-primary-modal waves-light" mdbRippleRadius (click)="saveAndStay();saveConfirmation.hide()">Oui</a>
+        <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" (click)="saveConfirmation.hide()" mdbRippleRadius>Non</a>
       </div>
     </div>
+  </div>
+</div>
+
+<div mdbModal #success="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [config]="{'backdrop': false, 'ignoreBackdropClick': true, 'keyboard': false}">
+  <div class="modal-dialog modal-sm modal-side modal-top-right modal-notify modal-success" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <p class="heading lead">Succès</p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="success.hide()">
+                  <span aria-hidden="true" class="white-text">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="text-center">
+                  <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                  <p>La sauvegarde s'est effectuée sans problème</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div mdbModal #error="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [config]="{'backdrop': false, 'ignoreBackdropClick': true, 'keyboard': false}">
+  <div class="modal-dialog modal-sm modal-side modal-top-right modal-notify modal-danger" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <p class="heading lead">Erreur</p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="error.hide()">
+                  <span aria-hidden="true" class="white-text">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="text-center">
+                  <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                  <p>Il y a eu un problème lors de la sauvegarde. Voir la console pour plus de détails.</p>
+              </div>
+          </div>
+      </div>
   </div>
 </div>

@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <a type="button" class="btn btn-primary-modal waves-light" mdbRippleRadius (click)="save.emit();modifyConfirmation.hide()">Oui</a>
+                    <a type="button" class="btn btn-primary-modal waves-light" mdbRippleRadius (click)="save.emit([item.pathName]);modifyConfirmation.hide()">Oui</a>
                     <a type="button" class="btn btn-outline-secondary-modal" data-dismiss="modal" (click)="modifyConfirmation.hide()" mdbRippleRadius>Non</a>
                 </div>
                 </div>
@@ -80,7 +80,7 @@
         </div>
 
         <div class="card-data grey lighten-1" *ngIf="!isChildren">
-            <app-navigation-editor-group [path]="item" [isChildren]="true" (save)="save.emit()"></app-navigation-editor-group>
+            <app-navigation-editor-group [path]="item" [isChildren]="true" (save)="save.emit([item.pathName].concat($event))"></app-navigation-editor-group>
         </div>
 
     </div>
