@@ -93,10 +93,7 @@ export class NavbarComponent implements OnInit {
       `<img src="/assets/logo_bleu_rev.svg" alt="logo" id="logo">`,
       `</a></logo>`,
       `<links>`,
-      `<ul class="navbar-nav mr-auto">`,
-      `<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">`,
-      `<a class="nav-link waves-light" mdbRippleRadius [routerLink]="['/app']">${this.routes.fullName}</a>`,
-      `</li>`
+      `<ul class="navbar-nav mr-auto">`
     );
 
     this.routes.children.forEach((routeNode: RouteNode) => {
