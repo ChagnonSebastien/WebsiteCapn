@@ -14,9 +14,16 @@ export class RouteResolverService implements Resolve<RouteNode> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<RouteNode> | Promise<RouteNode> | RouteNode {
     return new Promise<RouteNode>((resolve, reject) => {
-      this.http.get(`http://${SERVER_URL}:${SERVER_PORT}/navigation`).toPromise().then((response: Response) => {
-        resolve(response.json());
-      });
+      this.http
+        .get(`http://${SERVER_URL}:${SERVER_PORT}/navigation`)
+        .toPromise()
+        .then((response: Response) => {
+          resolve(response.json());
+        })
+        .catch((reason: any) => {
+          console.log(reason);
+          throw new Error(reason);
+        });
     });
   }
 
