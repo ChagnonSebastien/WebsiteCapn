@@ -7,13 +7,28 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
   Database.getInstance()
   .then(database => {
     database.connection.collection('navigation')
-      .findOne('')
+      .findOne({"_id": "navigation"})
       .then((result: any) => {
         res.send(result);
       })
       .catch((reason: any) => {
-        console.log(reason);
+        console.log(`Error while getting navigation from the server: ${reason}`);
         res.send();
+      });
+  });
+});
+
+router.post('/', (req: Request, res: Response, next: NextFunction) => {
+  Database.getInstance()
+  .then(database => {
+    database.connection.collection('navigation')
+      .update({"_id": "navigation"}, req.body, { upsert: true })
+      .then((result: any) => {
+        res.send({ "error": false });
+      })
+      .catch((reason: any) => {
+        console.log(`Error while posting new navigation to the server: ${reason}`);
+        res.send({ "error": true, "reason": reason });
       });
   });
 });
