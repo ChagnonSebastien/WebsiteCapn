@@ -12,12 +12,12 @@ import { PageDataResolverService } from './user/modular-page/page-data-resolver.
 
 const appRoutes: Routes = [
     { path: 'app', component: BaseComponent, resolve: { routes: RouteResolverService }, children: [
-        { path: '', component: HomeComponent },
+        { path: '', redirectTo: '/app/accueil', pathMatch: 'full' },
         { path: 'not-found', component: ErrorComponent },
         { path: '**', component: ModularPageComponent, resolve: { pageData: PageDataResolverService } }
     ]},
     { path: 'admin', component: AdminComponent, resolve: { routes: RouteResolverService }},
-    { path: '', redirectTo: '/app', pathMatch: 'full' },
+    { path: '', redirectTo: '/app/accueil', pathMatch: 'full' },
     { path: '**', redirectTo: '/app/not-found' }
 ];
 

@@ -5,7 +5,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { RouteNode } from './route-node';
-import * as CONFIG from './config';
+import { SERVER_URL, SERVER_PORT } from './config';
 
 @Injectable()
 export class RouteResolverService implements Resolve<RouteNode> {
@@ -14,7 +14,7 @@ export class RouteResolverService implements Resolve<RouteNode> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<RouteNode> | Promise<RouteNode> | RouteNode {
     return new Promise<RouteNode>((resolve, reject) => {
-      this.http.get(`http://${CONFIG.SERVER_URL}:${CONFIG.SERVER_PORT}/navigation`).toPromise().then((response: Response) => {
+      this.http.get(`http://${SERVER_URL}:${SERVER_PORT}/navigation`).toPromise().then((response: Response) => {
         resolve(response.json());
       });
     });
