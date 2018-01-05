@@ -12,8 +12,8 @@ const headers = new Headers({ 'Content-Type': 'application/json' });
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  templateUrl: './navigation-editor.component.html',
+  styleUrls: ['./navigation-editor.component.scss']
 })
 export class AdminComponent implements OnInit {
 
