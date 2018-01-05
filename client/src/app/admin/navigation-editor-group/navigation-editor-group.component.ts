@@ -1,4 +1,4 @@
-import { RouteNode } from './../../../route-node';
+import { RouteNode } from '../../route-node';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { SortablejsOptions } from 'angular-sortablejs';
 

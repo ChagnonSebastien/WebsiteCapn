@@ -4,18 +4,18 @@ import { ActivatedRoute, Data, Router } from '@angular/router';
 
 import { SortablejsOptions } from 'angular-sortablejs';
 
-import { RouteNode } from '../../../route-node';
-import { SERVER_URL, SERVER_PORT } from '../../../config';
+import { RouteNode } from '../../route-node';
+import { SERVER_URL, SERVER_PORT } from '../../config';
 import { ModalDirective } from 'ng-mdb-pro/free';
 
 const headers = new Headers({ 'Content-Type': 'application/json' });
 
 @Component({
-  selector: 'app-admin',
+  selector: 'app-navigation-editor',
   templateUrl: './navigation-editor.component.html',
   styleUrls: ['./navigation-editor.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class NavigationEditorComponent implements OnInit {
 
   @ViewChild('success')
   private successModal: ModalDirective;

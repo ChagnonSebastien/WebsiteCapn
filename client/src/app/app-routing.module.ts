@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
 
-import { AdminComponent } from './admin/admin/navigation-editor/navigation-editor.component';
+import { NavigationEditorComponent } from './admin/navigation-editor/navigation-editor.component';
 import { ProgramComponent } from './user/modular-page/dynamic/program/program.component';
 import { ErrorComponent } from './user/error/error.component';
 import { HomeComponent } from './user/home/home.component';
@@ -16,7 +16,7 @@ const appRoutes: Routes = [
         { path: 'not-found', component: ErrorComponent },
         { path: '**', component: ModularPageComponent, resolve: { pageData: PageDataResolverService } }
     ]},
-    { path: 'admin', component: AdminComponent, resolve: { routes: RouteResolverService }},
+    { path: 'admin', component: NavigationEditorComponent, resolve: { routes: RouteResolverService }},
     { path: '', redirectTo: '/app/accueil', pathMatch: 'full' },
     { path: '**', redirectTo: '/app/not-found' }
 ];
