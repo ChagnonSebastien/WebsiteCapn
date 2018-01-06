@@ -1,5 +1,90 @@
-<p>
-  admin works!
-</p>
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark capn-color fixed-top scrolling-navbar">
+  <logo>
+    <a class="navbar-brand" [routerLink]="['/admin']">
+      <img src="/assets/logo_bleu_rev.svg" alt="logo" id="logo">
+    </a>
+  </logo>
+  <links>
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link waves-light" mdbRippleRadius [routerLink]="['/admin', 'path-editor']">Navigation</a>
+          </li>
+      </ul>
+      <a *ngIf="!authenticated" class="nav-link waves-light text-white" mdbRippleRadius (click)="showAuthentication()">
+        <i class="fa fa-lock" aria-hidden="true"></i> Connection
+      </a>
+      <a *ngIf="authenticated" class="nav-link waves-light text-white" mdbRippleRadius>{{user}}</a>
+  </links>
+</mdb-navbar>
 
-<router-outlet></router-outlet>
+<main class="container">
+  <div *ngIf="!authenticated">
+    <h2>Attention</h2>
+    <p>Tu dois te connecter pour continuer</p>
+  </div>
+
+  <router-outlet *ngIf="authenticated"></router-outlet>
+</main>
+
+<div mdbModal #login="mdb-modal" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+        <div class="modal-content">
+            <div class="modal-header capn-color white-text">
+                <h4 class="title"><i class="fa fa-user"></i> Connection</h4>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="login.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="md-form form-sm">
+                    <i class="fa fa-envelope prefix"></i>
+                    <input mdbActive type="text" id="form30" class="form-control" #username>
+                    <label for="form30">Courriel</label>
+                </div>
+                <div class="md-form form-sm">
+                    <i class="fa fa-lock prefix"></i>
+                    <input mdbActive type="password" id="form31" class="form-control" #pass>
+                    <label for="form31">Mot de passe</label>
+                </div>
+                <div class="text-center mt-2">
+                    <button class="btn btn-info waves-light capn-color" mdbRippleRadius (click)="authenticate(username.value, pass.value)">
+                      Connection
+                      <i class="fa fa-sign-in ml-1"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="options text-center text-md-right mt-1">
+                    <p>Oublié ton <a href="#">mot de passe?</a></p>
+                </div>
+                <button type="button" class="btn btn-outline-capn ml-auto" data-dismiss="modal" (click)="login.hide()" mdbRippleRadius>Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #success="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [config]="{'backdrop': false, 'ignoreBackdropClick': false, 'keyboard': false}">
+  <div class="modal-dialog modal-sm modal-side modal-top-right modal-notify modal-success" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="heading lead">Succès</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="success.hide()">
+          <span aria-hidden="true" class="white-text">×</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div mdbModal #error="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [config]="{'backdrop': false, 'ignoreBackdropClick': false, 'keyboard': false}">
+  <div class="modal-dialog modal-sm modal-side modal-top-right modal-notify modal-danger" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="heading lead">Mauvaise adresse ou mot de passe</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="error.hide()">
+            <span aria-hidden="true" class="white-text">×</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>  
