@@ -1,5 +1,6 @@
 import { Database } from './../database';
 import { Router, Request, Response, NextFunction } from "express";
+import { tokenVerify } from '../middleware/tokenVerify';
 
 const router = Router();
 
@@ -18,21 +19,6 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-router.post('/', (req: Request, res: Response, next: NextFunction) => {
-  Database.getInstance()
-  .then(database => {
-    database.connection.collection('navigation')
-      .update({"_id": "navigation"}, req.body, { upsert: true })
-      .then((result: any) => {
-        res.send({ "error": false });
-      })
-      .catch((reason: any) => {
-        console.log(`Error while posting new navigation to the server: ${reason}`);
-        res.send({ "error": true, "reason": reason });
-      });
-  });
-});
-
 router.get('/page/:path', (req: Request, res: Response, next: NextFunction) => {
   Database.getInstance()
   .then(database => {
@@ -43,6 +29,23 @@ router.get('/page/:path', (req: Request, res: Response, next: NextFunction) => {
       })
       .catch((reason: any) => {
         res.send();
+      });
+  });
+});
+
+router.use(tokenVerify);
+
+router.post('/', (req: Request, res: Response, next: NextFunction) => {
+  Database.getInstance()
+  .then(database => {
+    database.connection.collection('navigation')
+      .update({"_id": "navigation"}, req.body.data, { upsert: true })
+      .then((result: any) => {
+        res.send({ "success": true });
+      })
+      .catch((reason: any) => {
+        console.log(`Error while posting new navigation to the server: ${reason}`);
+        res.send({ "success": false, "message": reason });
       });
   });
 });
