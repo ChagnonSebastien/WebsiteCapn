@@ -23,6 +23,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NavigationEditorComponent } from './admin/navigation-editor/navigation-editor.component';
 import { NavigationEditorGroupComponent } from './admin/navigation-editor-group/navigation-editor-group.component';
 import { AuthenticationService } from './admin/authentification.service';
+import { ProgramEditorComponent } from './admin/modular-page-editor/dynamic/program-editor/program-editor.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthenticationService } from './admin/authentification.service';
     ProgramComponent,
     AdminComponent,
     NavigationEditorComponent,
-    NavigationEditorGroupComponent
+    NavigationEditorGroupComponent,
+    ProgramEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,7 @@ import { AuthenticationService } from './admin/authentification.service';
   entryComponents: [
     GenericTextComponent,
     ProgramComponent,
-    NavigationEditorGroupComponent
+    ProgramEditorComponent
   ]
 })
 export class AppModule { }
