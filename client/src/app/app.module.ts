@@ -1,3 +1,4 @@
+import { GenericTextEditorComponent } from './admin/generic-text/generic-text-editor.component';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpModule, JsonpModule, RequestOptions } from '@angular/http';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
@@ -6,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MDBBootstrapModules, MDBSpinningPreloader } from 'ng-mdb-pro';
 import { SortablejsModule } from 'angular-sortablejs';
+import { QuillModule } from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +25,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NavigationEditorComponent } from './admin/navigation-editor/navigation-editor.component';
 import { NavigationEditorGroupComponent } from './admin/navigation-editor-group/navigation-editor-group.component';
 import { AuthenticationService } from './admin/authentification.service';
+import { ModularPageEditorComponent } from './admin/modular-page-editor/modular-page-editor.component';
 import { ProgramEditorComponent } from './admin/modular-page-editor/dynamic/program-editor/program-editor.component';
 
 @NgModule({
@@ -39,10 +42,13 @@ import { ProgramEditorComponent } from './admin/modular-page-editor/dynamic/prog
     AdminComponent,
     NavigationEditorComponent,
     NavigationEditorGroupComponent,
+    ModularPageEditorComponent,
+    GenericTextEditorComponent,
     ProgramEditorComponent
   ],
   imports: [
     BrowserModule,
+    QuillModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientJsonpModule,
@@ -64,6 +70,7 @@ import { ProgramEditorComponent } from './admin/modular-page-editor/dynamic/prog
   bootstrap: [ AppComponent ],
   entryComponents: [
     GenericTextComponent,
+    GenericTextEditorComponent,
     ProgramComponent,
     ProgramEditorComponent
   ]
