@@ -7,6 +7,7 @@ import { SortablejsOptions } from 'angular-sortablejs';
 import { RouteNode } from '../../route-node';
 import { SERVER_URL, SERVER_PORT } from '../../config';
 import { ModalDirective } from 'ng-mdb-pro/free';
+import { AuthenticationService } from '../authentification.service';
 
 const headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -25,7 +26,12 @@ export class NavigationEditorComponent implements OnInit {
 
   private routes: RouteNode;
 
-  constructor( private route: ActivatedRoute, private http: Http, private router: Router ) { }
+  constructor(
+    private route: ActivatedRoute,
+    private http: Http,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit() {
     this.route.data.subscribe((data: Data) => {
@@ -66,13 +72,19 @@ export class NavigationEditorComponent implements OnInit {
   private save(): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
     this.http
-      .post(`http://${SERVER_URL}:${SERVER_PORT}/navigation`, JSON.stringify(this.routes), {headers: headers})
+      .post(`http://${SERVER_URL}:${SERVER_PORT}/navigation`, {
+        'token': this.authenticationService.getToken(),
+        'data': this.routes
+      }, {headers: headers})
       .toPromise()
       .then((response: Response) => {
-        if (!response.json().error) {
+        if (response.json().success) {
           resolve(true);
         } else {
-          reject(response.json().reason);
+          setTimeout(() => {
+            this.authenticationService.logOut();
+          }, 3000);
+          reject(response.json().message);
           resolve(false);
         }
       })
