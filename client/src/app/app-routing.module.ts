@@ -5,14 +5,14 @@ import { NavigationEditorComponent } from './admin/navigation-editor/navigation-
 import { ProgramComponent } from './user/modular-page/dynamic/program/program.component';
 import { ErrorComponent } from './user/error/error.component';
 import { HomeComponent } from './user/home/home.component';
-import { BaseComponent } from './user/base/base.component';
+import { UserComponent } from './user/user.component';
 import { RouteResolverService } from './route-resolver.service';
 import { ModularPageComponent } from './user/modular-page/modular-page.component';
 import { PageDataResolverService } from './user/modular-page/page-data-resolver.service';
 import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
-    { path: 'app', component: BaseComponent, resolve: { routes: RouteResolverService }, children: [
+    { path: 'app', component: UserComponent, resolve: { routes: RouteResolverService }, children: [
         { path: '', redirectTo: '/app/accueil', pathMatch: 'full' },
         { path: 'not-found', component: ErrorComponent },
         { path: '**', component: ModularPageComponent, resolve: { pageData: PageDataResolverService } }

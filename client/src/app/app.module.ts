@@ -14,7 +14,7 @@ import { ProgramComponent } from './user/modular-page/dynamic/program/program.co
 import { GenericTextComponent } from './user/modular-page/dynamic/generic-text/generic-text.component';
 import { ErrorComponent } from './user/error/error.component';
 import { HomeComponent } from './user/home/home.component';
-import { BaseComponent } from './user/base/base.component';
+import { UserComponent } from './user/user.component';
 import { NavbarComponent } from './user/navbar/navbar.component';
 import { ModularPageComponent } from './user/modular-page/modular-page.component';
 import { FooterComponent } from './user/footer/footer.component';
@@ -27,7 +27,7 @@ import { AuthenticationService } from './admin/authentification.service';
 @NgModule({
   declarations: [
     AppComponent,
-    BaseComponent,
+    UserComponent,
     HomeComponent,
     ErrorComponent,
     ModularPageComponent,
