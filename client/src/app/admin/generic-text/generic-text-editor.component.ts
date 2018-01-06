@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Quill } from 'quill';
+import { DynamicComponent } from '../../user/modular-page/dynamic/dynamic.component';
 
 @Component({
   selector: 'app-generic-text-editor',
   templateUrl: './generic-text-editor.component.html',
   styleUrls: ['./generic-text-editor.component.scss']
 })
-export class GenericTextEditorComponent implements OnInit {
+export class GenericTextEditorComponent extends DynamicComponent implements OnInit {
 
   private editor: Quill;
   public options =
@@ -30,7 +31,9 @@ export class GenericTextEditorComponent implements OnInit {
     ]
   };
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
     setTimeout(() => {
