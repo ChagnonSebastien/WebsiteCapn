@@ -53,4 +53,6 @@ function routes(app: Express): void {
     app.use('/navigation', navigation);
     const amiliaProxy = require('./routers/amilia-proxy');
     app.use('/amilia-proxy', amiliaProxy);
+    const login = require('./routers/login');
+    app.use('/login', login);
 }
