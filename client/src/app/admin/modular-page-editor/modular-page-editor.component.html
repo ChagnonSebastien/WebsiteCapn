@@ -1,3 +1,82 @@
-<p>
-  modular-page-editor works!
-</p>
+<app-editor-frame *ngFor="let module of pageData" [type]="module.type" [module]="module" (save)="savePageData()"></app-editor-frame>
+
+<div class="fixed-action-btn" style="bottom: 45px; left: 24px;">
+  <a class="btn-floating btn-lg capn-color waves-light" (click)="content.show()" mdbRippleRadius>
+      <i class="fa fa-pencil"></i>
+  </a>
+</div>
+
+<div
+  mdbModal
+  #content="mdb-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myContentLabel"
+  aria-hidden="true"
+  [config]="{backdrop: true, ignoreBackdropClick: false}">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="content.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Éditeur de pages</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container" [sortablejs]="pageData" #sortable>
+          <div class="card black-text" *ngFor="let page of pageData; let i = index">
+            <div class="card-body">
+              <app-page-card [page]="page" (delete)="deleteModule(i)"></app-page-card>
+            </div>
+          </div>
+          <div class="new-page z-depth-1 hoverable" (click)="newModule()">
+            Nouveau Module
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn capn-color waves-light" aria-label="Close" (click)="content.hide()" mdbRippleRadius>Fermer</button>
+        <button type="button" class="btn capn-color relative waves-light" mdbRippleRadius (click)="savePageData()">Sauvegarder</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mdbModal #success="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [config]="{'backdrop': false, 'ignoreBackdropClick': false, 'keyboard': false}">
+  <div class="modal-dialog modal-sm modal-side modal-top-right modal-notify modal-success" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <p class="heading lead">Succès</p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="success.hide()">
+                  <span aria-hidden="true" class="white-text">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="text-center">
+                  <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                  <p>La sauvegarde s'est effectuée sans problème</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div mdbModal #error="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [config]="{'backdrop': false, 'ignoreBackdropClick': false, 'keyboard': false}">
+  <div class="modal-dialog modal-sm modal-side modal-top-right modal-notify modal-danger" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <p class="heading lead">Erreur</p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="error.hide()">
+                  <span aria-hidden="true" class="white-text">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="text-center">
+                  <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                  <p>Il y a eu un problème lors de la sauvegarde. Voir la console pour plus de détails.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
