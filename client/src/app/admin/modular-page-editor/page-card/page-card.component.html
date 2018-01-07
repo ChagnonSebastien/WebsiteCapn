@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col col-2 text-center">
+    <div class="row">
+      <i class="fa fa-arrows col handle fa-lg"></i>
+    </div>
+    <div class="row" (click)="deleteModule()">
+      <i class="fa fa-trash col fa-lg"></i>
+    </div>
+  </div>
+  <div class="col">
+    <select class="browser-default" [(ngModel)]="page.type">
+      <option *ngFor="let option of optionsSelect" [value]="option">
+        {{option}}
+      </option>
+    </select>
+    <input type="text" [(ngModel)]="page.id" placeholder="idantifiant">
+  </div>
+</div>
