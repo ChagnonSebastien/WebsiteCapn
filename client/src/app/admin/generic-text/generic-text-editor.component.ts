@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Quill } from 'quill';
-import { DynamicComponent } from '../../user/modular-page/dynamic/dynamic.component';
+import { DynamicEditorComponent } from '../modular-page-editor/dynamic/dynamic-editor.component';
 
 @Component({
   selector: 'app-generic-text-editor',
   templateUrl: './generic-text-editor.component.html',
   styleUrls: ['./generic-text-editor.component.scss']
 })
-export class GenericTextEditorComponent extends DynamicComponent implements OnInit {
+export class GenericTextEditorComponent extends DynamicEditorComponent implements OnInit {
 
   private editor: Quill;
   public options =
@@ -36,16 +36,15 @@ export class GenericTextEditorComponent extends DynamicComponent implements OnIn
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      console.log();
-    }, 2000);
   }
 
   onEditorCreated(event: Quill) {
     this.editor = event;
+    this.editor.pasteHTML(0, this.context.innerHtml);
   }
 
-  save() {
-    console.log(this.editor.root.innerHTML);
+  onContentChanged(event: any) {
+    this.context.innerHtml = event.html;
+    this.contextModifiedEmitter.next(true);
   }
 }
