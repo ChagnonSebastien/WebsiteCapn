@@ -12,9 +12,6 @@ import { AuthenticationService } from './authentification.service';
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  @ViewChild('success')
-  private successModal: ModalDirective;
-
   @ViewChild('error')
   private errorModal: ModalDirective;
 
@@ -47,8 +44,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.authenticationService.authenticate(user, password)
       .then((success: boolean) => {
         if (success) {
-           this.loginModal.hide();
-           this.successModal.show();
+          this.loginModal.hide();
         } else {
           this.errorModal.show();
         }
