@@ -50,4 +50,19 @@ router.post('/', (req: Request, res: Response, next: NextFunction) => {
   });
 });
 
+router.post('/page/:path', (req: Request, res: Response, next: NextFunction) => {
+  Database.getInstance()
+  .then(database => {
+    database.connection.collection('pages')
+      .update({"_id": req.params.path}, {'content': req.body.data}, { upsert: true })
+      .then((result: any) => {
+        res.send({ "success": true });
+      })
+      .catch((reason: any) => {
+        console.log(`Error while posting new page to the server: ${reason}`);
+        res.send({ "success": false, "message": reason });
+      });
+  });
+});
+
 module.exports = router;
