@@ -27,6 +27,8 @@ import { NavigationEditorGroupComponent } from './admin/navigation-editor-group/
 import { AuthenticationService } from './admin/authentification.service';
 import { ModularPageEditorComponent } from './admin/modular-page-editor/modular-page-editor.component';
 import { ProgramEditorComponent } from './admin/modular-page-editor/dynamic/program-editor/program-editor.component';
+import { EditorFrameComponent } from './admin/modular-page-editor/dynamic/editor-frame.component';
+import { PageCardComponent } from './admin/modular-page-editor/page-card/page-card.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { ProgramEditorComponent } from './admin/modular-page-editor/dynamic/prog
     NavigationEditorGroupComponent,
     ModularPageEditorComponent,
     GenericTextEditorComponent,
-    ProgramEditorComponent
+    ProgramEditorComponent,
+    EditorFrameComponent,
+    PageCardComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,8 @@ import { ProgramEditorComponent } from './admin/modular-page-editor/dynamic/prog
       animation: 150,
       handle: '.handle',
       scrollSensitivity: 100
-    })
+    }),
+    FormsModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
