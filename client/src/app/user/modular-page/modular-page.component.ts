@@ -43,10 +43,10 @@ export class ModularPageComponent implements OnInit, OnDestroy {
 
   private getComponent(name: String): Type<any> {
     switch (name) {
-      case 'ProgramComponent':
+      case 'Programme':
       return ProgramComponent;
 
-      case 'GenericTextComponent':
+      case 'Texte':
       return GenericTextComponent;
     }
   }
