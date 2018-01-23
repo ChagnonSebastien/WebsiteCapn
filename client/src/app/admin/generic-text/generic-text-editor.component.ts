@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Quill } from 'quill';
 import { DynamicEditorComponent } from '../modular-page-editor/dynamic/dynamic-editor.component';
 
 @Component({
   selector: 'app-generic-text-editor',
   templateUrl: './generic-text-editor.component.html',
-  styleUrls: ['./generic-text-editor.component.scss']
+  styleUrls: ['./generic-text-editor.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GenericTextEditorComponent extends DynamicEditorComponent implements OnInit {
 

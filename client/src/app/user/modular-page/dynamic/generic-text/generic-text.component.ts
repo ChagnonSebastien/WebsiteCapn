@@ -3,7 +3,7 @@ import { DynamicComponent } from '../dynamic.component';
 
 @Component({
   selector: 'app-generic-text',
-  template: '<div class="container" #container></div>'
+  template: '<div class="container ql-editor" #container></div><hr>'
 })
 export class GenericTextComponent extends DynamicComponent implements OnInit {
 
