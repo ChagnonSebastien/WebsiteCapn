@@ -1,6 +1,6 @@
 <app-editor-frame *ngFor="let module of pageData" [type]="module.type" [module]="module" (save)="savePageData()"></app-editor-frame>
 
-<div class="fixed-action-btn" style="bottom: 45px; left: 24px;">
+<div class="fixed-action-btn" style="bottom: 45px; left: 24px; width :0;">
   <a class="btn-floating btn-lg capn-color waves-light" (click)="content.show()" mdbRippleRadius>
       <i class="fa fa-pencil"></i>
   </a>
