@@ -14,7 +14,6 @@ import {
 import { CommonModule } from '@angular/common';
 
 import { RouteNode } from '../../route-node';
-import { BaseComponent } from '../base/base.component';
 
 @Component({
   selector: 'app-footer',
