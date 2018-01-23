@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Quill } from 'quill';
-import { DynamicEditorComponent } from '../modular-page-editor/dynamic/dynamic-editor.component';
+import { DynamicEditorComponent } from '../../../modular-page-editor/dynamic/dynamic-editor.component';
 
 @Component({
   selector: 'app-generic-text-editor',

@@ -1,4 +1,4 @@
-import { GenericTextEditorComponent } from './admin/generic-text/generic-text-editor.component';
+import { GenericTextEditorComponent } from './admin/modular-page-editor/dynamic/generic-text-editor/generic-text-editor.component';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpModule, JsonpModule, RequestOptions } from '@angular/http';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';

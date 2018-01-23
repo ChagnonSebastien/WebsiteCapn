@@ -2,7 +2,7 @@ import { ModalDirective } from 'ng-mdb-pro/free';
 import { Response } from 'express';
 import { AuthenticationService } from './../authentification.service';
 import { Http } from '@angular/http';
-import { GenericTextEditorComponent } from './../generic-text/generic-text-editor.component';
+import { GenericTextEditorComponent } from '../modular-page-editor/dynamic/generic-text-editor/generic-text-editor.component';
 import { ActivatedRoute, Data } from '@angular/router';
 import {
   Component,
