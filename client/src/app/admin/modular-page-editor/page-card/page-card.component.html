@@ -8,6 +8,10 @@
     </div>
   </div>
   <div class="col">
+    <div class="form-group">
+      <input type="checkbox" class="filled-in" [id]="randomToken" [(ngModel)]="page.visible">
+      <label [for]="randomToken">Module visible</label>
+    </div>
     <select class="browser-default" [(ngModel)]="page.type">
       <option *ngFor="let option of optionsSelect" [value]="option">
         {{option}}
