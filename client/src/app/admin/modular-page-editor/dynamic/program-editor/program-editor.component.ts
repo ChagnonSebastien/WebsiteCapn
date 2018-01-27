@@ -15,19 +15,31 @@ export class ProgramEditorComponent extends DynamicEditorComponent implements On
 
   private loaded: boolean;
 
-  private categories: string[];
+  private categories: {value: string, label: string}[];
 
   private amiliaRequest: Subscription;
+
+  private randomToken: string;
 
   constructor(private http: Http) {
     super();
 
     this.loaded = false;
+    this.randomToken = Math.random().toString();
   }
 
   ngOnInit() {
     if (this.context.programID) {
       this.loadProgram();
+    } else {
+      this.context.onlyOneCategory = false;
+      this.context.category = '';
+      this.context.hideFull = false;
+      this.context.placesLeft = false;
+      this.context.price = false;
+      this.context.age = false;
+      this.context.start = false;
+      this.context.time = false;
     }
   }
 
@@ -46,17 +58,22 @@ export class ProgramEditorComponent extends DynamicEditorComponent implements On
           this.contextModifiedEmitter.next(true);
         });
     }
-
-      /* this.amiliaRequest
-      .then((value: Response) => {
-        this.processJson(JSON.parse(value.text()));
-        this.loaded = true;
-      })
-      .catch(reason => console.log(reason)); */
   }
 
   private parseData(data: any): void {
-    console.log(data.Items);
+    this.categories = this.removeDuplicates(data.Items.map((activity: any) => {
+      return activity.CategoryName;
+    })).map((category: string) => {
+      return { value: category, label: category };
+    });
   }
+
+  private removeDuplicates(array: string[]): string[] {
+    const uniques = array.filter((elem, index, self) => {
+        return index === self.indexOf(elem);
+    });
+
+    return uniques;
+}
 
 }

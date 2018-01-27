@@ -1,5 +1,5 @@
-<div class="row justify-content-sm-center">
-  <div class="col col-sm-6">
+<div class="row justify-content-md-center">
+  <div class="col col-md-6">
     <div class="md-form">
       <input mdbActive type="text" id="programId" class="form-control" [(ngModel)]="context.programID" (keyup)="loadProgram()">
       <label for="programId" class="">Numéro de la programmation</label>
@@ -7,9 +7,41 @@
   </div>
 </div>
 
-<div *ngIf="programId !== ''">
+<div *ngIf="programId !== ''" class="text-left">
   <div *ngIf="!loaded"><mdb-spinner spinnerType="big" spinnerColor="blue"></mdb-spinner></div>
 
-  <div *ngIf="loaded">
+  <div *ngIf="loaded" class="row">
+    <div *ngIf="categories.length === 0" class="col-md-12">ID non-valide</div>
+    
+    <div *ngIf="categories.length > 0" class="col-md-6 bottom-margin">
+      <input type="checkbox" class="filled-in" [id]="'onlyOne' + randomToken" [(ngModel)]="context.onlyOneCategory">
+      <label [for]="'onlyOne' + randomToken">Catégorie unique</label>
+      <div *ngIf="context.onlyOneCategory">
+        <mdb-select [options]="categories" placeholder="Choisir une catégorie" [(ngModel)]="context.category"></mdb-select>
+      </div>
+    </div>
+
+    <div *ngIf="categories.length > 0" class="col-md-6">
+      <h5>Options</h5>
+      <div class="form-group">
+        <input type="checkbox" [id]="'hideFull' + randomToken" [(ngModel)]="context.hideFull">
+        <label [for]="'hideFull' + randomToken">Cacher les cours complet</label>
+        <br>
+        <input type="checkbox" [id]="'placesLeft' + randomToken" [(ngModel)]="context.placesLeft">
+        <label [for]="'placesLeft' + randomToken">Afficher places restantes</label>
+        <br>
+        <input type="checkbox" [id]="'showPrice' + randomToken" [(ngModel)]="context.price">
+        <label [for]="'showPrice' + randomToken">Afficher prix</label>
+        <br>
+        <input type="checkbox" [id]="'ageRestriction' + randomToken" [(ngModel)]="context.age">
+        <label [for]="'ageRestriction' + randomToken">Afficher les restrictions d'age</label>
+        <br>
+        <input type="checkbox" [id]="'startDate' + randomToken" [(ngModel)]="context.start">
+        <label [for]="'startDate' + randomToken">Afficher la date de début</label>
+        <br>
+        <input type="checkbox" [id]="'time' + randomToken" [(ngModel)]="context.time">
+        <label [for]="'time' + randomToken">Afficher l'horaire (simplifié)</label>
+      </div>
+    </div>
   </div>
 </div>
