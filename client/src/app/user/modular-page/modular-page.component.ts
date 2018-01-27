@@ -30,7 +30,11 @@ export class ModularPageComponent implements OnInit, OnDestroy {
       });
       this.componentRefs = [];
 
-      data['pageData'].forEach((componentData: any) => {
+      data['pageData']
+      .filter((componentData: any) => {
+        return componentData.visible;
+      })
+      .forEach((componentData: any) => {
         const factory = this.componentFactoryResolver.resolveComponentFactory(this.getComponent(componentData.type));
         const componentRef = this.container.createComponent(factory);
         this.componentRefs.push(componentRef);
