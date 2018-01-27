@@ -38,8 +38,6 @@ export class ProgramEditorComponent extends DynamicEditorComponent implements On
       this.context.placesLeft = true;
       this.context.price = false;
       this.context.age = false;
-      this.context.start = false;
-      this.context.time = false;
       this.context.shop = true;
     }
   }

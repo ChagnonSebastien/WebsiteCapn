@@ -1,8 +1,8 @@
 <div class="row justify-content-md-center">
   <div class="col col-md-6">
     <div class="md-form">
-      <input mdbActive type="text" id="programId" class="form-control" [(ngModel)]="context.programID" (keyup)="loadProgram()">
-      <label for="programId" class="">Numéro de la programmation</label>
+      <input mdbActive type="text" [id]="'programID' + randomToken" class="form-control" [(ngModel)]="context.programID" (keyup)="loadProgram()">
+      <label [for]="'programID' + randomToken" class="">Numéro de la programmation</label>
     </div>
   </div>
 </div>
@@ -30,17 +30,11 @@
         <input type="checkbox" [id]="'placesLeft' + randomToken" [(ngModel)]="context.placesLeft">
         <label [for]="'placesLeft' + randomToken">Afficher places restantes</label>
         <br>
-        <input type="checkbox" [id]="'showPrice' + randomToken" [(ngModel)]="context.price">
-        <label [for]="'showPrice' + randomToken">Afficher prix</label>
-        <br>
         <input type="checkbox" [id]="'ageRestriction' + randomToken" [(ngModel)]="context.age">
         <label [for]="'ageRestriction' + randomToken">Afficher les restrictions d'age</label>
         <br>
-        <input type="checkbox" [id]="'startDate' + randomToken" [(ngModel)]="context.start">
-        <label [for]="'startDate' + randomToken">Afficher la date de début</label>
-        <br>
-        <input type="checkbox" [id]="'time' + randomToken" [(ngModel)]="context.time">
-        <label [for]="'time' + randomToken">Afficher l'horaire (simplifié)</label>
+        <input type="checkbox" [id]="'showPrice' + randomToken" [(ngModel)]="context.price">
+        <label [for]="'showPrice' + randomToken">Afficher prix</label>
         <br>
         <input type="checkbox" [id]="'shop' + randomToken" [(ngModel)]="context.shop">
         <label [for]="'shop' + randomToken">Lien vers le magasin</label>

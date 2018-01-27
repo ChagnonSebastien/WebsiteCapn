@@ -19,12 +19,12 @@
                                             <span *ngIf="context.placesLeft">
                                                 Places restantes:
                                                 {{ activity.spotsRemaining > 5 ? 'Plus de 5' : (activity.spotsRemaining < 0 ? 0 : activity.spotsRemaining) }}
+                                                <br>
                                             </span>
-                                            <br>
                                             <span *ngIf="context.age">
-                                                    Age: {{ activity.age }}
+                                                Age: {{ activity.age }}
+                                                <br>
                                             </span>
-                                            <br>
                                             <span *ngIf="context.price">
                                                     Prix: {{ activity.price }}$
                                             </span>

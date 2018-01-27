@@ -14,7 +14,7 @@ export class Subcategory {
             activity.LegacyLocation,
             activity.SpotsRemaining,
             activity.Price,
-            activity.Age.Min + ' - ' + activity.Age.Max + (activity.Age.Months ? ' mois' : ' ans')
+            activity.Age ? activity.Age.Min + ' - ' + activity.Age.Max + (activity.Age.Months ? ' mois' : ' ans') : 'Pour tous'
         ));
     }
 }
