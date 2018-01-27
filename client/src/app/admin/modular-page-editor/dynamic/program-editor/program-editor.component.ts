@@ -34,12 +34,13 @@ export class ProgramEditorComponent extends DynamicEditorComponent implements On
     } else {
       this.context.onlyOneCategory = false;
       this.context.category = '';
-      this.context.hideFull = false;
-      this.context.placesLeft = false;
+      this.context.hideFull = true;
+      this.context.placesLeft = true;
       this.context.price = false;
       this.context.age = false;
       this.context.start = false;
       this.context.time = false;
+      this.context.shop = true;
     }
   }
 
