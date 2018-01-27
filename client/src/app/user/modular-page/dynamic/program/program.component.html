@@ -15,9 +15,19 @@
                                     <div class="card-body z-depth-1-half">
                                         <h4 class="card-title">{{ activity.name }}</h4>
                                         <hr>
-                                        <p *ngIf="context.placesLeft" class="card-text">
-                                            Places restantes:
-                                            {{ activity.spotsRemaining > 5 ? 'Plus de 5' : (activity.spotsRemaining < 0 ? 0 : activity.spotsRemaining)}}
+                                        <p class="card-text">
+                                            <span *ngIf="context.placesLeft">
+                                                Places restantes:
+                                                {{ activity.spotsRemaining > 5 ? 'Plus de 5' : (activity.spotsRemaining < 0 ? 0 : activity.spotsRemaining) }}
+                                            </span>
+                                            <br>
+                                            <span *ngIf="context.age">
+                                                    Age: {{ activity.age }}
+                                            </span>
+                                            <br>
+                                            <span *ngIf="context.price">
+                                                    Prix: {{ activity.price }}$
+                                            </span>
                                         </p>
                                         <button
                                             *ngIf="context.shop"

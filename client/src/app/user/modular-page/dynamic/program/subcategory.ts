@@ -13,7 +13,8 @@ export class Subcategory {
             activity.Name,
             activity.LegacyLocation,
             activity.SpotsRemaining,
-            activity.Price
+            activity.Price,
+            activity.Age.Min + ' - ' + activity.Age.Max + (activity.Age.Months ? ' mois' : ' ans')
         ));
     }
 }
