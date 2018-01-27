@@ -13,7 +13,7 @@
   <div *ngIf="loaded" class="row">
     <div *ngIf="categories.length === 0" class="col-md-12">ID non-valide</div>
     
-    <div *ngIf="categories.length > 0" class="col-md-6 bottom-margin">
+    <div *ngIf="categories.length > 0" class="col-md-6 bottom-margin" (click)="contextModifiedEmitter.next(true)">
       <input type="checkbox" class="filled-in" [id]="'onlyOne' + randomToken" [(ngModel)]="context.onlyOneCategory">
       <label [for]="'onlyOne' + randomToken">Catégorie unique</label>
       <div *ngIf="context.onlyOneCategory">
@@ -23,7 +23,7 @@
 
     <div *ngIf="categories.length > 0" class="col-md-6">
       <h5>Options</h5>
-      <div class="form-group">
+      <div class="form-group" (click)="contextModifiedEmitter.next(true)">
         <input type="checkbox" [id]="'hideFull' + randomToken" [(ngModel)]="context.hideFull">
         <label [for]="'hideFull' + randomToken">Cacher les cours complet</label>
         <br>
@@ -42,7 +42,7 @@
         <input type="checkbox" [id]="'time' + randomToken" [(ngModel)]="context.time">
         <label [for]="'time' + randomToken">Afficher l'horaire (simplifié)</label>
         <br>
-        <input type="checkbox" [id]="'shop' + randomToken" [(ngModel)]="context.time">
+        <input type="checkbox" [id]="'shop' + randomToken" [(ngModel)]="context.shop">
         <label [for]="'shop' + randomToken">Lien vers le magasin</label>
       </div>
     </div>

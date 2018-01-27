@@ -45,7 +45,12 @@ export class ProgramEditorComponent extends DynamicEditorComponent implements On
   }
 
   private loadProgram(): void {
-    this.loaded = false;
+    if (this.loaded) {
+      this.context.onlyOneCategory = false;
+      this.context.category = '';
+      this.loaded = false;
+    }
+
     if (this.amiliaRequest) {
       this.amiliaRequest.unsubscribe();
     }
