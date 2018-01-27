@@ -22,11 +22,13 @@ export class PageDataResolverService implements Resolve<{}[]> {
         .get(`http://${SERVER_URL}:${SERVER_PORT}/navigation/page/${path}`)
         .toPromise()
         .then((response: Response) => {
-          if (response.text() === '') {
+          if (response.text() === '' && state.url.split('/')[1] === 'app') {
             this.router.navigate(['/app', 'not-found']);
-            resolve();
-          } else {
+          }
+          try {
             resolve(JSON.parse(response.text()));
+          } catch (err) {
+            resolve([]);
           }
         })
         .catch(reason => console.log(reason));
