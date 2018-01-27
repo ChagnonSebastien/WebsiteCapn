@@ -87,7 +87,8 @@ export class ModularPageEditorComponent implements OnInit {
   private newModule(): void {
     this.pageData.push({
       'type': DEFAULT_MODULE,
-      'context': {}
+      'context': {},
+      'visible': false
     });
   }
 
