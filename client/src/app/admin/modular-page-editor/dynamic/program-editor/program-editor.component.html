@@ -1,3 +1,15 @@
-<p>
-  program-editor works!
-</p>
+<div class="row justify-content-sm-center">
+  <div class="col col-sm-6">
+    <div class="md-form">
+      <input mdbActive type="text" id="programId" class="form-control" [(ngModel)]="context.programID" (keyup)="loadProgram()">
+      <label for="programId" class="">Numéro de la programmation</label>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="programId !== ''">
+  <div *ngIf="!loaded"><mdb-spinner spinnerType="big" spinnerColor="blue"></mdb-spinner></div>
+
+  <div *ngIf="loaded">
+  </div>
+</div>
