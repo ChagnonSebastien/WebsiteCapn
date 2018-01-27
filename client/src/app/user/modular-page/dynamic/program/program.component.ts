@@ -36,13 +36,19 @@ export class ProgramComponent extends DynamicComponent implements OnInit {
 
   private processJson(value: any): void {
     this.programName = value.Items[0].ProgramName;
-    value.Items.forEach(activity => {
-      let targetCategory = this.getCategory(activity.CategoryName)[0];
-      if (targetCategory === undefined) {
-        targetCategory = new Category(activity.CategoryName);
-        this.categories.push(targetCategory);
+    value.Items
+      .filter(activity => {
+        return !this.context.hideFull || activity.SpotsRemaining > 0;
+      })
+      .forEach(activity => {
+      if (!this.context.onlyOneCategory || this.context.category === activity.CategoryName) {
+        let targetCategory = this.getCategory(activity.CategoryName)[0];
+        if (targetCategory === undefined) {
+          targetCategory = new Category(activity.CategoryName);
+          this.categories.push(targetCategory);
+        }
+        targetCategory.newItem(activity);
       }
-      targetCategory.newItem(activity);
     });
   }
 
