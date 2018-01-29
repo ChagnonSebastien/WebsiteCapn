@@ -18,7 +18,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   @ViewChild('login')
   private loginModal: ModalDirective;
 
-  private authenticated: boolean;
+  public authenticated: boolean;
   private user: string;
   private authenticationListener: Subscription;
 
@@ -40,7 +40,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.loginModal.show();
   }
 
-  private authenticate(user: string, password: string): void {
+  public authenticate(user: string, password: string): void {
     this.authenticationService.authenticate(user, password)
       .then((success: boolean) => {
         if (success) {

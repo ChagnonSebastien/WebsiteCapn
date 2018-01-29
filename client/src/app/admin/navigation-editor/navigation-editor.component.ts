@@ -24,7 +24,7 @@ export class NavigationEditorComponent implements OnInit {
   @ViewChild('error')
   private errorModal: ModalDirective;
 
-  private routes: RouteNode;
+  public routes: RouteNode;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,7 +39,7 @@ export class NavigationEditorComponent implements OnInit {
     });
   }
 
-  private saveAndRoute(routes: any): void {
+  public saveAndRoute(routes: any): void {
     this.save()
       .then((success: boolean) => {
         if (success) {
@@ -54,7 +54,7 @@ export class NavigationEditorComponent implements OnInit {
       });
   }
 
-  private saveAndStay(routes: string[]): void {
+  public saveAndStay(): void {
     this.save()
       .then((success: boolean) => {
         if (success) {

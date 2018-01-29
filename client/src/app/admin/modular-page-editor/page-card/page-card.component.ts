@@ -9,11 +9,11 @@ import { ADMIN_COMPONENTS } from '../../admin.config';
 })
 export class PageCardComponent implements OnInit {
 
-  private optionsSelect: string[];
+  public optionsSelect: string[];
 
-  private randomToken: string;
+  public randomToken: string;
 
-  @Input('page') private page: any;
+  @Input('page') public page: any;
 
   @ViewChild('checkbox') private checkbox: HTMLInputElement;
 
@@ -32,7 +32,7 @@ export class PageCardComponent implements OnInit {
     this.page.visible = !this.page.visible;
   }
 
-  private deleteModule() {
+  public deleteModule() {
     this.delete.emit();
   }
 

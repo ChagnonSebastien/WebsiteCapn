@@ -15,7 +15,7 @@ export class ProgramComponent extends DynamicComponent implements OnInit {
   private type: ProgramType;
   private programName: String;
   private categories: Category[];
-  private loaded: boolean;
+  public loaded: boolean;
 
   constructor(private http: Http) {
     super();

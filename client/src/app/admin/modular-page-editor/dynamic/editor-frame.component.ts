@@ -28,7 +28,7 @@ export class EditorFrameComponent implements OnInit, OnDestroy {
   @ViewChild('container', { read: ViewContainerRef })
   container: ViewContainerRef;
 
-  private _type: string;
+  public _type: string;
 
   @Input('type') set type(type: string) {
     this._type = type;
@@ -38,14 +38,14 @@ export class EditorFrameComponent implements OnInit, OnDestroy {
   }
 
   @Input('module')
-  private module: any;
+  public module: any;
 
   @Output()
   private save: EventEmitter<void>;
 
   private componentRef: ComponentRef<DynamicEditorComponent>;
 
-  private contextModified: boolean;
+  public contextModified: boolean;
 
   private contextModifiedSubject: Subject<boolean>;
 
@@ -78,7 +78,7 @@ export class EditorFrameComponent implements OnInit, OnDestroy {
     instance.contextModifiedEmitter = contextModifiedSubject;
   }
 
-  private saveComponent() {
+  public saveComponent() {
     this.save.emit();
   }
 

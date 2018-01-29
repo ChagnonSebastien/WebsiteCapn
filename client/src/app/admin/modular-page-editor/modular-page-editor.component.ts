@@ -43,7 +43,7 @@ export class ModularPageEditorComponent implements OnInit {
   @ViewChild('sortable')
   sortable: SelectComponent;
 
-  private pageData: {}[];
+  public pageData: {}[];
 
   constructor(private route: ActivatedRoute, private http: Http, private authenticationService: AuthenticationService) {
     this.pageData = [];
@@ -55,7 +55,7 @@ export class ModularPageEditorComponent implements OnInit {
     });
   }
 
-  private savePageData() {
+  public savePageData() {
     const path = this.route.snapshot.url.map((segment: UrlSegment) => {
       return segment.path;
     }).join('_');
@@ -84,7 +84,7 @@ export class ModularPageEditorComponent implements OnInit {
       });
   }
 
-  private newModule(): void {
+  public newModule(): void {
     this.pageData.push({
       'type': DEFAULT_MODULE,
       'context': {},

@@ -37,7 +37,7 @@ export class NavigationEditorGroupComponent implements OnInit {
         this.path.children[index].placement = value;
     }
 
-    private newPage(): void {
+    public newPage(): void {
         this.path.children.push(new RouteNode('name', 'path'));
     }
 

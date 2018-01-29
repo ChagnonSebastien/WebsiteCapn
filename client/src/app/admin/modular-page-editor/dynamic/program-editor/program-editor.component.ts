@@ -19,7 +19,7 @@ export class ProgramEditorComponent extends DynamicEditorComponent implements On
 
   private amiliaRequest: Subscription;
 
-  private randomToken: string;
+  public randomToken: string;
 
   constructor(private http: Http) {
     super();
@@ -42,7 +42,7 @@ export class ProgramEditorComponent extends DynamicEditorComponent implements On
     }
   }
 
-  private loadProgram(): void {
+  public loadProgram(): void {
     if (this.loaded) {
       this.context.onlyOneCategory = false;
       this.context.category = '';
