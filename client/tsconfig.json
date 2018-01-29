@@ -4,6 +4,12 @@
     "src/**/*.ts"
   ],
   "compileOnSave": false,
+  "angularCompilerOptions": {
+    "annotationsAs": "decorators",
+    "skipTemplateCodegen": true,
+    "skipMetadataEmit": false,
+    "strictMetadataEmit": true
+  },
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
