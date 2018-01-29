@@ -55,7 +55,7 @@ export class ProgramEditorComponent extends DynamicEditorComponent implements On
 
     if (this.context.programID !== '') {
       this.amiliaRequest = this.http
-        .get(`http://${SERVER_URL}:${SERVER_PORT}/amilia-proxy/programs/${this.context.programID}`)
+        .get(`https://${SERVER_URL}:${SERVER_PORT}/amilia-proxy/programs/${this.context.programID}`)
         .subscribe((value: Response) => {
           this.parseData(JSON.parse(value.text()));
           this.loaded = true;

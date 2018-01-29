@@ -72,7 +72,7 @@ export class NavigationEditorComponent implements OnInit {
   private save(): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
     this.http
-      .post(`http://${SERVER_URL}:${SERVER_PORT}/navigation`, {
+      .post(`https://${SERVER_URL}:${SERVER_PORT}/navigation`, {
         'token': this.authenticationService.getToken(),
         'data': this.routes
       }, {headers: headers})

@@ -33,7 +33,7 @@ export class AuthenticationService {
   public authenticate(user: string, password: string): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       this.http
-        .post(`http://${SERVER_URL}:${SERVER_PORT}/login`, {'user': user, 'password': password})
+        .post(`https://${SERVER_URL}:${SERVER_PORT}/login`, {'user': user, 'password': password})
         .toPromise()
         .then((response: Response) => {
           if (response.json().success) {

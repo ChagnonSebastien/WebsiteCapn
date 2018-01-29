@@ -25,7 +25,7 @@ export class ProgramComponent extends DynamicComponent implements OnInit {
 
   ngOnInit() {
     this.http
-      .get(`http://${SERVER_URL}:${SERVER_PORT}/amilia-proxy/programs/${this.context.programID}`)
+      .get(`https://${SERVER_URL}:${SERVER_PORT}/amilia-proxy/programs/${this.context.programID}`)
       .toPromise()
       .then((value: Response) => {
         this.processJson(JSON.parse(value.text()));

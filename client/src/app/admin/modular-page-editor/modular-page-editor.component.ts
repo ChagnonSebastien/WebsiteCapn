@@ -61,7 +61,7 @@ export class ModularPageEditorComponent implements OnInit {
     }).join('_');
 
     this.http
-      .post(`http://${SERVER_URL}:${SERVER_PORT}/navigation/page/${path}`, {
+      .post(`https://${SERVER_URL}:${SERVER_PORT}/navigation/page/${path}`, {
         'token': this.authenticationService.getToken(),
         'data': this.pageData
       })

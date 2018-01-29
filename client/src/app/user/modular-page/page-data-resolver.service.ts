@@ -19,7 +19,7 @@ export class PageDataResolverService implements Resolve<{}[]> {
 
     return new Promise((resolve, reject) => {
       this.http
-        .get(`http://${SERVER_URL}:${SERVER_PORT}/navigation/page/${path}`)
+        .get(`https://${SERVER_URL}:${SERVER_PORT}/navigation/page/${path}`)
         .toPromise()
         .then((response: Response) => {
           if (response.text() === '' && state.url.split('/')[1] === 'app') {
