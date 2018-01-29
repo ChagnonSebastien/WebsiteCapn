@@ -27,7 +27,7 @@ function startServer(isHttps: boolean): https.Server | http.Server {
     if (isHttps) {
         const options = {
             key: readFileSync('/etc/letsencrypt/live/poutineqc.ca/privkey.pem'),
-            cert: readFileSync('/etc/letsencrypt/live/poutineqc.ca/cert.pem')
+            cert: readFileSync('/etc/letsencrypt/live/poutineqc.ca/fullchain.pem')
         };
     
         server = https.createServer(options, app).listen(port);
